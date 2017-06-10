@@ -10,21 +10,16 @@ namespace MazeGame.Controllers
 {
     public class RegisterController : ApiController
     {
-        private static List<User> users = new List<User>
-        {
-            new User {Name = "Eden Shuker", Password="1234", Email="edenshuker1997@gmail.com" },
-            new User {Name="Shani Shuker", Password= "5678", Email="shanina@gmail.com"}
-        };
 
         public IEnumerable<User> GetAllUsers()
         {
-            return users;
+            return UsersInfo.GetInstance().GetAllUsers();
         }
 
         [HttpPost]
         public void AddUser(User user)
         {
-            users.Add(user);
+            UsersInfo.GetInstance().AddUser(user);
         }
     }
 }

@@ -127,13 +127,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\IModel.cs" />
-    <Compile Include="Models\Model.cs" />
-    <Compile Include="Models\MultiPlayerGame.cs" />
-    <Compile Include="Models\PlayerInfo.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\SinglePlayerGame.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UsersInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

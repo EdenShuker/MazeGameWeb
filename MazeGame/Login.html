@@ -31,6 +31,18 @@
             <div class="form-group">
                 <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-login" value="Log In" style="width:30%;margin-top:10px;">
             </div>
+            <script>
+                $("#login-submit").click(function () {
+                    var name = $("#username").val();
+                $.getJSON(apiUrl + "/" + name)
+                .done(function (user) {
+                    alert(user.Name + " founded");
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    alert("user doesn;t exist");
+                });
+            });
+            </script>
         </form>
 
     </div> <!-- /container -->

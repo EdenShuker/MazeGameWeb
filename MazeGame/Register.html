@@ -28,7 +28,7 @@
                 </div>
                 <div class="control-group">
                     <!-- E-mail -->
-                    <label class="control-label" for="email">E-mail</label>
+                    <label class="control-label" for="email">Email</label>
                     <div class="controls">
                         <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
                     </div>
@@ -58,15 +58,20 @@
                 </div>
                 <script>
                     $("#btnAddUser").click(function () {
-                        var user = {
-                            Name: $("#username").val(),
-                            Password: $("#password").val(),
-                            Email: $("#email").val()
-                        };
-                        $.post(apiUrl, user)
-                        .done(function () {
-                            alert("User registered successfully");
-                        });
+                        if ($("#password").val() == $("#password_confirm").val()) {
+                            var user = {
+                                Name: $("#username").val(),
+                                Password: $("#password").val(),
+                                Email: $("#email").val()
+                            };
+                            var apiUrl = "api/Register";
+                            // TODO: most times adding user doesn't work
+                            $.post(apiUrl, user).done(function () {
+                                alert("User registered successfully");
+                            });
+                        } else {
+                            alert("passwords doesn't match");
+                        }
                     });
                 </script>
             </fieldset>
