@@ -43,8 +43,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MazeGeneratorLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\תכנות מתקדם 2\ex1\MazeGeneratorLib.dll</HintPath>
+    </Reference>
     <Reference Include="MazeLib">
       <HintPath>..\..\..\..\Desktop\תכנות מתקדם 2\ex1\MazeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MazeObjectAdapterLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AdvProg2\MazeObjectAdapterLib\bin\Debug\MazeObjectAdapterLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -54,6 +62,10 @@
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="SearchAlgorithmsLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AdvProg2\MazeObjectAdapterLib\bin\Debug\SearchAlgorithmsLib.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -87,12 +99,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
-    <Content Include="jquery-3.2.1.js" />
-    <Content Include="LearnMore.html" />
-    <Content Include="Login.html" />
-    <Content Include="mazeBoard.js" />
-    <Content Include="navbar.css" />
-    <Content Include="navbar.js" />
+    <Content Include="Views\Images\Exit.png" />
+    <Content Include="Views\Images\minion.gif" />
+    <Content Include="Views\Images\pokemon.gif" />
+    <Content Include="Views\LearnMore.html" />
+    <Content Include="Views\Login.html" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -103,15 +114,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="index1.html" />
-    <Content Include="register.css" />
-    <Content Include="Register.html" />
-    <Content Include="SinglePlayerPage.html" />
+    <Content Include="Views\index1.html" />
+    <Content Include="Views\register.css" />
+    <Content Include="Views\Register.html" />
+    <Content Include="Scripts\jquery-3.2.1.js" />
+    <Content Include="Scripts\mazeBoard.js" />
+    <Content Include="Scripts\navbar.css" />
+    <Content Include="Scripts\navbar.js" />
+    <Content Include="Views\SinglePlayerPage.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\GenerateMazeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -120,6 +134,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ServerModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UsersInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,14 +4,14 @@
     <title>Single Player Game</title>
     <meta charset="utf-8" />
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="navbar.css" rel="stylesheet">
+    <link href="../Scripts/navbar.css" rel="stylesheet">
 </head>
 <body>
-    <script src="jquery-3.2.1.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="navbar.js"></script>
+    <script src="../Scripts/jquery-3.2.1.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../Scripts/navbar.js"></script>
     <div class="container body-content">
         <div class="navigationbar"></div>
         <h2>Single Player Game</h2>
@@ -50,6 +50,16 @@
                 <button type="submit" id="solveGame" class="btn btn-default">Solve Game</button>
             </div>
         </div>
+        <script>
+            var apiUrl = "api/SingleGame/GenerateMaze";
+            $("#startGame").click(function () {
+                var name = $("#mazeName").val();
+                var rows = $("#rows").val();
+                var cols = $("#cols").val();
+
+            });
+
+        </script>
         <div class="col-sm-8 text-center">
             <canvas id="mazeCanvas" tabindex="1" class="maze-board" width="500"
                     height="500"></canvas>
