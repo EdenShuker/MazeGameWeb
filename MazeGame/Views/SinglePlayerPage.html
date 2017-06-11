@@ -60,7 +60,7 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     url: "../api/SingleGame/GenerateMaze/" + name + "/" + rows + "/" + cols,
-                    success: function (recData) { alert(recData); },
+                    success: function (recData) { alert('Success'); },
                     error: function (result) { alert('error ' + result[0]); }
                 });
             });

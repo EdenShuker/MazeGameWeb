@@ -43,10 +43,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MazeGeneratorLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\תכנות מתקדם 2\ex1\MazeGeneratorLib.dll</HintPath>
-    </Reference>
     <Reference Include="MazeLib">
       <HintPath>..\..\..\..\Desktop\תכנות מתקדם 2\ex1\MazeLib.dll</HintPath>
     </Reference>
@@ -114,7 +110,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Views\index1.html" />
     <Content Include="Views\register.css" />
     <Content Include="Views\Register.html" />
     <Content Include="Scripts\jquery-3.2.1.js" />
@@ -127,13 +122,11 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SingleGameController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ServerModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UsersInfo.cs" />
