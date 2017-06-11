@@ -1,6 +1,7 @@
 ﻿(function ($) {
 
-    $.fn.drawMaze = function (maze) {
+    $.fn.drawMaze = function (maze,startRow, startCol, exitRow,
+        exitCol,playerImage, exitImage, isEnable, funcMove) {
         var myCanvas = document.getElementById("mazeCanvas");
         var context = mazeCanvas.getContext("2d");
         var rows = maze.length;
@@ -15,6 +16,22 @@
                 }
             }
         }
+        var playerImg = new Image(cellWidth, cellHeight);
+        playerImg.onload = function () {
+            context.drawImage(playerImage, startRow, startCol);
+        }
+        playerImage.src = "../Views/Images/minion.gif";
+
+        var playerImg = new Image(cellWidth, cellHeight);
+        playerImg.onload = function () {
+            context.drawImage(playerImage, exitRow, exitCol);
+        }
+        playerImage.src = "../Views/Images/Exit.gif";
+
+        if (isEnable == true) {
+            funcMove();
+        }
+
         return this;
     };
 

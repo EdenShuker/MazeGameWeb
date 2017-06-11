@@ -51,12 +51,18 @@
             </div>
         </div>
         <script>
-            var apiUrl = "api/SingleGame/GenerateMaze";
             $("#startGame").click(function () {
                 var name = $("#mazeName").val();
                 var rows = $("#rows").val();
                 var cols = $("#cols").val();
-
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    url: "../api/SingleGame/GenerateMaze/" + name + "/" + rows + "/" + cols,
+                    success: function (recData) { alert(recData); },
+                    error: function (result) { alert('error ' + result[0]); }
+                });
             });
 
         </script>

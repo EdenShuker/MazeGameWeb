@@ -14,20 +14,22 @@ namespace MazeGame.Controllers
     public class SingleGameController : ApiController
     {
 
-        [HttpPost]
-        [Route("api/SingleGame/GenerateMaze")]
-        public JObject GenerateMaze(string name, int rows, int cols)
+        [HttpGet]
+        [Route("api/SingleGame/GenerateMaze/{name}/{rows}/{cols}")]
+        public string GenerateMaze(string name, int rows, int cols)
         {
             Maze maze = ServerModel.GetInstance().GenerateMaze(name, rows, cols);
-            JObject obj = JObject.Parse(maze.ToJSON());
-            return obj;
+            //JObject obj = JObject.Parse(maze.ToJSON());
+            return "recieved data:" + maze.Name + "," + maze.Cols + "," + maze.Rows;
         }
 
-        //[HttpPost]
-        //[Route("api/SingleGame/SolveMaze")]        //public JObject SolveMaze(string mazeName, int algo)
-        //{
-        //    Solution<Position> solution = ServerModel.GetInstance().SolveMaze(mazeName, algo);
-            
-        //}
+        [HttpGet]
+        [Route("api/SingleGame/Example/{paramOne}/{paramTwo}")]
+        public string Get(int paramOne, int paramTwo)
+        {
+            return "The [Route] with multiple params worked";
+        }
+
+
     }
 }
