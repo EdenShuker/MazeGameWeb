@@ -3,10 +3,13 @@
 <head>
     <title>Single Player Game</title>
     <meta charset="utf-8" />
+    <!--<script src="../Scripts/jquery-3.2.1.js"></script>
+    <script src="../Scripts/JQuery.mazeBoard.js"></script>-->
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="../Scripts/navbar.css" rel="stylesheet">
+
 </head>
 <body>
     <script src="../Scripts/jquery-3.2.1.js"></script>
@@ -50,6 +53,16 @@
                 <button type="submit" id="solveGame" class="btn btn-default">Solve Game</button>
             </div>
         </div>
+        
+        <!--canvas-->
+        <div class="col-sm-8 text-center">
+            <canvas id="myCanvas" tabindex="1" class="maze-board" width="500"
+                    height="500"></canvas>
+        </div>
+        
+        <script src="../Scripts/jquery-3.2.1.js"></script>
+        <script src="../Scripts/JQuery.mazeBoard.js"></script>
+
         <script>
             $("#startGame").click(function () {
                 var name = $("#mazeName").val();
@@ -60,16 +73,27 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     url: "../api/SingleGame/GenerateMaze/" + name + "/" + rows + "/" + cols,
-                    success: function (recData) { alert('Success'); },
+                    success: function (recData) {
+                        // todo: plugin goes here?
+                        alert('Success');
+                        var mazeData = [recData["Rows"], recData["Cols"], recData["Maze"]];
+                        var myMazeBoard = $("#myCanvas").mazeBoard(
+                            mazeData,
+                            recData["Start"]["Row"],
+                            recData["Start"]["Col"],
+                            recData["End"]["Row"],
+                            recData["End"]["Col"],
+                            "/Images/minion.gif",
+                            "/Images/Exit.gif",
+                            true,
+                            function() {
+                                alert("moving func");
+                            });
+                    },
                     error: function (result) { alert('error ' + result[0]); }
                 });
             });
-
         </script>
-        <div class="col-sm-8 text-center">
-            <canvas id="mazeCanvas" tabindex="1" class="maze-board" width="500"
-                    height="500"></canvas>
-        </div>
     </div>
 
 </body>

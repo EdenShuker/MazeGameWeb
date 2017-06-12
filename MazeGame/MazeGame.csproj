@@ -55,9 +55,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SearchAlgorithmsLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -95,6 +94,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
+    <Content Include="Scripts\JQuery.changeSizes.js" />
+    <Content Include="Views\HtmlPage1.html" />
     <Content Include="Views\Images\Exit.png" />
     <Content Include="Views\Images\minion.gif" />
     <Content Include="Views\Images\pokemon.gif" />
@@ -113,7 +114,7 @@
     <Content Include="Views\register.css" />
     <Content Include="Views\Register.html" />
     <Content Include="Scripts\jquery-3.2.1.js" />
-    <Content Include="Scripts\mazeBoard.js" />
+    <Content Include="Scripts\JQuery.mazeBoard.js" />
     <Content Include="Scripts\navbar.css" />
     <Content Include="Scripts\navbar.js" />
     <Content Include="Views\SinglePlayerPage.html" />
