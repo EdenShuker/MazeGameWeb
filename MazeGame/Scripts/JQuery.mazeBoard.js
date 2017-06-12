@@ -1,10 +1,10 @@
 ﻿(function ($) {
 
-    $.fn.myFunc = function() {
+    $.fn.myFunc = function () {
         alert("in the plugin first");
     }
 
-    $.fn.mazeBoard = function(mazeData, startRow, startCol, exitRow, exitCol, playerImage, exitImage, isEnable, funcMove) {
+    $.fn.mazeBoard = function (mazeData, startRow, startCol, exitRow, exitCol, playerImage, exitImage, isEnable, funcMove) {
         // todo: 'maze' object will be with the \r\n chars, 
         // todo: so --> rows = number of \r\n --> cols = number of chars in one row till \r\n
         alert("in the plugin");
@@ -16,7 +16,7 @@
         var cellHeight = this[0].height / rows;
         for (var i = 0; i < rows; i++) {
             for (var j = 0; j < cols; j++) {
-                if (mazeData[2][i*cols + j] === "1") {
+                if (mazeData[2][i * cols + j] === "1") {
                     context.fillRect(cellWidth * j,
                         cellHeight * i,
                         cellWidth,
@@ -24,15 +24,15 @@
                 }
             }
         }
-        var playerImg = new Image(cellWidth, cellHeight);
-        playerImg.onload = function() {
-            context.drawImage(playerImg, startRow, startCol);
+        var playerImg = new Image();
+        playerImg.onload = function () {
+            context.drawImage(playerImg, startCol * cellWidth, startRow * cellHeight, cellWidth, cellHeight);
         }
         playerImg.src = "../Views/Images/minion.gif";
 
-        var exitImg = new Image(cellWidth, cellHeight);
-        exitImg.onload = function() {
-            context.drawImage(exitImg, exitRow, exitCol);
+        var exitImg = new Image();
+        exitImg.onload = function () {
+            context.drawImage(exitImg, exitCol * cellWidth, exitRow * cellHeight, cellWidth, cellHeight);
         }
         exitImg.src = "../Views/Images/Exit.png";
 
