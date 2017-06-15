@@ -16,8 +16,11 @@
             context.drawImage(playerImg, startCol * cellWidth, startRow * cellHeight, cellWidth, cellHeight);
             currentRow = startRow;
             currentCol = startCol;
-            sol.split("").forEach(function(c) {
-                window.setTimeout(function() {
+            sol.split("").forEach(function (c) {
+                window.setTimeout(async function () {
+                    // "delete" prev player-image
+                    context.fillStyle = "#ffffff";
+                    context.fillRect(cellWidth * currentCol, cellHeight * currentRow, cellWidth, cellHeight);
                     switch (c) {
                         case "0":
                             // left

@@ -72,11 +72,5 @@ namespace MazeGame.Controllers
             return builder.ToString();
         }
 
-        /*[HttpGet]
-        [Route("api/SingleGame/Example/{paramOne}/{paramTwo}")]
-        public string Get(int paramOne, int paramTwo)
-        {
-            return "The [Route] with multiple params worked";
-        }*/
     }
 }
