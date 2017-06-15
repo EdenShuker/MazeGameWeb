@@ -16,38 +16,39 @@
             context.drawImage(playerImg, startCol * cellWidth, startRow * cellHeight, cellWidth, cellHeight);
             currentRow = startRow;
             currentCol = startCol;
-            sol.split("").forEach(function (c) {
-                window.setTimeout(function () {
-                    var steps = sol.split("");
-                    for (var i = 0; i < steps.length; i++) {
-
-                    }
-                    // "delete" prev player-image
-                    context.fillStyle = "#ffffff";
-                    context.fillRect(cellWidth * currentCol, cellHeight * currentRow, cellWidth, cellHeight);
-                    switch (c) {
-                        case "0":
-                            // left
-                            currentCol -= 1;
-                            break;
-                        case "1":
-                            // right
-                            currentCol += 1;
-                            break;
-                        case "2":
-                            // up
-                            currentRow -= 1;
-                            break;
-                        case "3":
-                            // down
-                            currentRow += 1;
-                            break;
-                        default:
-                            break;
-                    }
-                    context.drawImage(playerImg, currentCol * cellWidth, currentRow * cellHeight, cellWidth, cellHeight);
-                },300);
-            });
+            var i = 0;
+            sol = sol.split("");
+            var intervalId = window.setInterval(function () {
+                // check for end of solution
+                if (currentRow === endRow && currentCol === endCol) {
+                    clearInterval(intervalId);
+                }
+                // "delete" prev player-image
+                context.fillStyle = "#ffffff";
+                context.fillRect(cellWidth * currentCol, cellHeight * currentRow, cellWidth, cellHeight);
+                switch (sol[i]) {
+                    case "0":
+                        // left
+                        currentCol -= 1;
+                        break;
+                    case "1":
+                        // right
+                        currentCol += 1;
+                        break;
+                    case "2":
+                        // up
+                        currentRow -= 1;
+                        break;
+                    case "3":
+                        // down
+                        currentRow += 1;
+                        break;
+                    default:
+                        break;
+                }
+                context.drawImage(playerImg, currentCol * cellWidth, currentRow * cellHeight, cellWidth, cellHeight);
+                i++;
+            }, 400);
         },
         error: function(result) { alert("error " + result[0]); }
     });

@@ -1,6 +1,7 @@
 ﻿var mazeStr;
 var startRow, startCol;
 var currentRow, currentCol;
+var endRow, endCol;
 var cellWidth, cellHeight;
 var playerImg;
 var context;
@@ -25,6 +26,8 @@ var context;
         mazeStr = mazeData[2];
         startRow = currentRow = initRow;
         startCol = currentCol = initCol;
+        endRow = exitRow;
+        endCol = exitCol;
         // draw squares
         for (var i = 0; i < rows; i++) {
             for (var j = 0; j < cols; j++) {
