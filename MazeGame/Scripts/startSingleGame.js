@@ -20,12 +20,6 @@
                 "Images/minion.gif",
                 "Images/Exit.png",
                 true,
-                /* idea: the func below will return the new pos 
-                 * return true --> movement to the given direction is valid
-                 * return false --> movement invalid
-                 * so this func will be responsible for the logic
-                 * and the plugin will be responsible for the draw (view)
-                */
                 function(direction, playerRow, playerCol) {
                     switch (direction) {
                     case 37:
@@ -59,4 +53,3 @@
         error: function(result) { alert("error " + result[0]); }
     });
 });
-

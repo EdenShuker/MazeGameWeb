@@ -8,7 +8,7 @@ namespace MazeGame.Models
 {
     public class User
     {
-        public int Id { get; set; }
+        [Key]
 
         public string Name { get; set; }
 

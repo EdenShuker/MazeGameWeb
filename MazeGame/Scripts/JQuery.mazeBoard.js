@@ -5,6 +5,7 @@ var endRow, endCol;
 var cellWidth, cellHeight;
 var playerImg;
 var context;
+var movePlayerFunc;
 
 (function($) {
 
@@ -17,11 +18,14 @@ var context;
         exitImagePath,
         isEnable,
         funcMove) {
+        var canvas = this[0];
         context = this[0].getContext("2d");
         var rows = mazeData[0];
         var cols = mazeData[1];
         cellWidth = this[0].width / cols;
         cellHeight = this[0].height / rows;
+        // clear previous board
+        context.clearRect(0, 0, canvas.width, canvas.height);
         // init vars
         mazeStr = mazeData[2];
         startRow = currentRow = initRow;
@@ -29,6 +33,7 @@ var context;
         endRow = exitRow;
         endCol = exitCol;
         // draw squares
+        context.fillStyle = "#000000";
         for (var i = 0; i < rows; i++) {
             for (var j = 0; j < cols; j++) {
                 if (mazeStr[i * cols + j] === "1") {
@@ -53,7 +58,7 @@ var context;
         exitImg.src = exitImagePath;
 
         if (isEnable == true) {
-            $("body").keydown(function updatePos(e) {
+            movePlayerFunc = function (e) {
                 var newPosition = funcMove(e.which, currentRow, currentCol);
                 if (currentRow !== newPosition[0] || currentCol !== newPosition[1]) {
                     // "delete" prev player-image
@@ -65,16 +70,18 @@ var context;
                     context.drawImage(playerImg, currentCol * cellWidth, currentRow * cellHeight, cellWidth, cellHeight);
                 }
                 // check for end of game
-                window.setTimeout(function() {
-                        if (currentRow === exitRow && currentCol === exitCol) {
-                            // disable movement once reached the end
-                            $("body").off("keydown", updatePos);
-                            alert("You did it!\nFinally...");
-                            return;
-                        }
-                    },
+                window.setTimeout(function () {
+                    if (currentRow === exitRow && currentCol === exitCol) {
+                        // disable movement once reached the end
+                        $("body").off("keydown", movePlayerFunc);
+                        alert("You did it!\nFinally...");
+                        return;
+                    }
+                },
                     100);
-            });
+            }
+
+            $("body").keydown(movePlayerFunc);
         }
 
         return this;

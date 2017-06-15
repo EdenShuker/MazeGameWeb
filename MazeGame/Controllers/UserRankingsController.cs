@@ -25,7 +25,7 @@ namespace MazeGame.Controllers
 
         // GET: api/UserRankings/5
         [ResponseType(typeof(UserRankings))]
-        public async Task<IHttpActionResult> GetUserRankings(int id)
+        public async Task<IHttpActionResult> GetUserRankings(string id)
         {
             UserRankings userRankings = await db.UserRankings.FindAsync(id);
             if (userRankings == null)
@@ -38,14 +38,14 @@ namespace MazeGame.Controllers
 
         // PUT: api/UserRankings/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutUserRankings(int id, UserRankings userRankings)
+        public async Task<IHttpActionResult> PutUserRankings(string id, UserRankings userRankings)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != userRankings.Id)
+            if (id != userRankings.Name)
             {
                 return BadRequest();
             }
@@ -81,14 +81,29 @@ namespace MazeGame.Controllers
             }
 
             db.UserRankings.Add(userRankings);
-            await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = userRankings.Id }, userRankings);
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (UserRankingsExists(userRankings.Name))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtRoute("DefaultApi", new { id = userRankings.Name }, userRankings);
         }
 
         // DELETE: api/UserRankings/5
         [ResponseType(typeof(UserRankings))]
-        public async Task<IHttpActionResult> DeleteUserRankings(int id)
+        public async Task<IHttpActionResult> DeleteUserRankings(string id)
         {
             UserRankings userRankings = await db.UserRankings.FindAsync(id);
             if (userRankings == null)
@@ -111,9 +126,9 @@ namespace MazeGame.Controllers
             base.Dispose(disposing);
         }
 
-        private bool UserRankingsExists(int id)
+        private bool UserRankingsExists(string id)
         {
-            return db.UserRankings.Count(e => e.Id == id) > 0;
+            return db.UserRankings.Count(e => e.Name == id) > 0;
         }
     }
 }

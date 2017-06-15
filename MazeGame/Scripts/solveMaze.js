@@ -16,12 +16,16 @@
             context.drawImage(playerImg, startCol * cellWidth, startRow * cellHeight, cellWidth, cellHeight);
             currentRow = startRow;
             currentCol = startCol;
+            // disable movement
+            $("body").off("keydown", movePlayerFunc);
+            // start showing solution
             var i = 0;
             sol = sol.split("");
             var intervalId = window.setInterval(function () {
                 // check for end of solution
                 if (currentRow === endRow && currentCol === endCol) {
                     clearInterval(intervalId);
+                    alert("Reached the end!\nTry next time but without being lazy...");
                 }
                 // "delete" prev player-image
                 context.fillStyle = "#ffffff";

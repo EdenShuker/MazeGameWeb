@@ -25,7 +25,7 @@ namespace MazeGame.Controllers
 
         // GET: api/Users/5
         [ResponseType(typeof(User))]
-        public async Task<IHttpActionResult> GetUser(int id)
+        public async Task<IHttpActionResult> GetUser(string id)
         {
             User user = await db.Users.FindAsync(id);
             if (user == null)
@@ -38,14 +38,14 @@ namespace MazeGame.Controllers
 
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutUser(int id, User user)
+        public async Task<IHttpActionResult> PutUser(string id, User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != user.Id)
+            if (id != user.Name)
             {
                 return BadRequest();
             }
@@ -81,14 +81,29 @@ namespace MazeGame.Controllers
             }
 
             db.Users.Add(user);
-            await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (UserExists(user.Name))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtRoute("DefaultApi", new { id = user.Name }, user);
         }
 
         // DELETE: api/Users/5
         [ResponseType(typeof(User))]
-        public async Task<IHttpActionResult> DeleteUser(int id)
+        public async Task<IHttpActionResult> DeleteUser(string id)
         {
             User user = await db.Users.FindAsync(id);
             if (user == null)
@@ -111,9 +126,9 @@ namespace MazeGame.Controllers
             base.Dispose(disposing);
         }
 
-        private bool UserExists(int id)
+        private bool UserExists(string id)
         {
-            return db.Users.Count(e => e.Id == id) > 0;
+            return db.Users.Count(e => e.Name == id) > 0;
         }
     }
 }
