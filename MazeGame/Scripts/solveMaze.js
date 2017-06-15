@@ -1,6 +1,6 @@
 ﻿$("#solveGame").click(function() {
     var name = $("#mazeName").val();
-    var algo = 0; // todo: get val from drop-down
+    var algo = $("#searchAlgo").val();
 
     $.ajax({
         type: "GET",
@@ -17,7 +17,7 @@
             currentRow = startRow;
             currentCol = startCol;
             sol.split("").forEach(function (c) {
-                window.setTimeout(async function () {
+                window.setTimeout( function () {
                     // "delete" prev player-image
                     context.fillStyle = "#ffffff";
                     context.fillRect(cellWidth * currentCol, cellHeight * currentRow, cellWidth, cellHeight);
@@ -42,8 +42,7 @@
                             break;
                     }
                     context.drawImage(playerImg, currentCol * cellWidth, currentRow * cellHeight, cellWidth, cellHeight);
-                },
-                300);
+                },300);
             });
         },
         error: function(result) { alert("error " + result[0]); }

@@ -10,15 +10,7 @@ namespace MazeGame.Controllers
 {
     public class LoginController : ApiController
     {
-        public IHttpActionResult GetIfUserExist(string name)
-        {
-            User user = UsersInfo.GetInstance().GetUser(name);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            return Ok(user);
-        }
+
     }
 }
 

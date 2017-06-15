@@ -13,13 +13,12 @@ namespace MazeGame.Controllers
 
         public IEnumerable<User> GetAllUsers()
         {
-            return UsersInfo.GetInstance().GetAllUsers();
+            return null;
         }
 
         [HttpPost]
         public void AddUser(User user)
         {
-            UsersInfo.GetInstance().AddUser(user);
         }
     }
 }
