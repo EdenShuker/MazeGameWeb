@@ -3,8 +3,6 @@
 <head>
     <title>Single Player Game</title>
     <meta charset="utf-8" />
-    <!--<script src="../Scripts/jquery-3.2.1.js"></script>
-    <script src="../Scripts/JQuery.mazeBoard.js"></script>-->
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -37,18 +35,21 @@
                     <input type="text" class="form-control" id="cols" />
                 </div>
             </div>
+            <!--start game-->
             <div class="form-group">
                 <button type="submit" id="startGame" class="btn btn-default">Start New Game</button>
             </div>
+            <!--Search algo-->
             <div class="form-group">
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Search Algo<span class="caret"></span></button>
+                    <button id="searchAlgo" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Search Algo<span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li><a href="#">BFS</a></li>
                         <li><a href="#">DFS</a></li>
                     </ul>
                 </div>
             </div>
+            <!--solve button-->
             <div class="form-group">
                 <button type="submit" id="solveGame" class="btn btn-default">Solve Game</button>
             </div>
@@ -56,44 +57,13 @@
         
         <!--canvas-->
         <div class="col-sm-8 text-center">
-            <canvas id="myCanvas" tabindex="1" class="maze-board" width="500"
-                    height="500"></canvas>
+            <canvas id="myCanvas" tabindex="1" class="maze-board" width="500" height="500"></canvas>
         </div>
         
         <script src="../Scripts/jquery-3.2.1.js"></script>
         <script src="../Scripts/JQuery.mazeBoard.js"></script>
-
-        <script>
-            $("#startGame").click(function () {
-                var name = $("#mazeName").val();
-                var rows = $("#rows").val();
-                var cols = $("#cols").val();
-                $.ajax({
-                    type: "GET",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    url: "../api/SingleGame/GenerateMaze/" + name + "/" + rows + "/" + cols,
-                    success: function (recData) {
-                        // todo: plugin goes here?
-                        alert('Success');
-                        var mazeData = [recData["Rows"], recData["Cols"], recData["Maze"]];
-                        var myMazeBoard = $("#myCanvas").mazeBoard(
-                            mazeData,
-                            recData["Start"]["Row"],
-                            recData["Start"]["Col"],
-                            recData["End"]["Row"],
-                            recData["End"]["Col"],
-                            "/Images/minion.gif",
-                            "/Images/Exit.gif",
-                            true,
-                            function() {
-                                alert("moving func");
-                            });
-                    },
-                    error: function (result) { alert('error ' + result[0]); }
-                });
-            });
-        </script>
+        <script src="../Scripts/startSingleGame.js"></script>
+        <script src="../Scripts/solveMaze.js"></script>
     </div>
 
 </body>

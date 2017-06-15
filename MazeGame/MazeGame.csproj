@@ -43,14 +43,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="MazeLib">
       <HintPath>..\..\..\..\Desktop\תכנות מתקדם 2\ex1\MazeLib.dll</HintPath>
     </Reference>
@@ -103,6 +95,8 @@
   <ItemGroup>
     <Content Include="index.html" />
     <Content Include="Scripts\JQuery.changeSizes.js" />
+    <Content Include="Scripts\solveMaze.js" />
+    <Content Include="Scripts\startSingleGame.js" />
     <Content Include="Views\HtmlPage1.html" />
     <Content Include="Views\Images\Exit.png" />
     <Content Include="Views\Images\minion.gif" />
@@ -138,7 +132,7 @@
     </Compile>
     <Compile Include="Models\ServerModel.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserRankings.cs" />
+    <Compile Include="Models\UsersInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
