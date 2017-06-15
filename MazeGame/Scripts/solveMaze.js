@@ -17,7 +17,11 @@
             currentRow = startRow;
             currentCol = startCol;
             sol.split("").forEach(function (c) {
-                window.setTimeout( function () {
+                window.setTimeout(function () {
+                    var steps = sol.split("");
+                    for (var i = 0; i < steps.length; i++) {
+
+                    }
                     // "delete" prev player-image
                     context.fillStyle = "#ffffff";
                     context.fillRect(cellWidth * currentCol, cellHeight * currentRow, cellWidth, cellHeight);
