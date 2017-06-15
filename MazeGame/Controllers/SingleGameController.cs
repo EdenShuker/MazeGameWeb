@@ -24,12 +24,7 @@ namespace MazeGame.Controllers
             return obj;
         }
 
-        [HttpGet]
-        [Route("api/SingleGame/Example/{paramOne}/{paramTwo}")]
-        public string Get(int paramOne, int paramTwo)
-        {
-            return "The [Route] with multiple params worked";
-        }
+
 
         private string ToJson(Maze maze)
         {
