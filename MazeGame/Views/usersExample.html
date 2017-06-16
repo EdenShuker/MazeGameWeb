@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+</head>
+<body>
+<div class="container">
+    <div class="page-header">
+        <h1>Users Service</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Users</h2>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled" data-bind="foreach: users">
+                        <li>
+                            <span data-bind="text: Name" style="font-weight: bold"></span>: 
+                            <span data-bind="text: Email"></span> 
+                            <a href="#" style="font-size: smaller">Details</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <script src="../Scripts/jquery-3.2.1.js"></script>
+    <script src="../Scripts/knockout-3.4.2.js"></script>
+<script src="../Scripts/app.js"></script>
+
+</body>
+</html>
