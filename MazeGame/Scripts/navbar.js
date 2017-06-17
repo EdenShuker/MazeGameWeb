@@ -34,7 +34,7 @@ $(function () {
         navbar = navbar.replace(login, logout);
         $(".navigationbar").html(navbar);
         // say hello to user
-        //$("#regLbl").innerHTML("Hello " + sessionStorage.getItem("user"));
+        document.getElementById("regLbl").innerHTML = "Hello " + sessionStorage.getItem("user");
         // apply logout
         $("#logLbl").on("click", function () {
             alert("clicked me finally");
@@ -44,6 +44,7 @@ $(function () {
             navbar = navbar.replace(logout, login);
             $(".navigationbar").html(navbar);
             // change text to register
+            document.getElementById("regLbl").innerHTML = "Register";
             //$("#regLbl").innerHTML("Register");
             window.location.href = "../Views/Login.html";
         });
