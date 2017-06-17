@@ -103,6 +103,7 @@
   <ItemGroup>
     <Content Include="index.html" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\homePage.js" />
     <Content Include="Scripts\JQuery.changeSizes.js" />
     <Content Include="Scripts\knockout-3.4.2.debug.js" />
     <Content Include="Scripts\knockout-3.4.2.js" />
@@ -126,6 +127,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Views\MultiPlayerPage.html" />
+    <Content Include="Views\Navbar.html" />
     <Content Include="Views\register.css" />
     <Content Include="Views\Register.html" />
     <Content Include="Scripts\jquery-3.2.1.js" />
@@ -140,7 +143,6 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SingleGameController.cs" />
     <Compile Include="Controllers\UserRankingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -150,6 +152,14 @@
     <Compile Include="Migrations\201706151517208_Initial.cs" />
     <Compile Include="Migrations\201706151517208_Initial.Designer.cs">
       <DependentUpon>201706151517208_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706161420469_Initial1.cs" />
+    <Compile Include="Migrations\201706161420469_Initial1.Designer.cs">
+      <DependentUpon>201706161420469_Initial1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706161429347_Initial2.cs" />
+    <Compile Include="Migrations\201706161429347_Initial2.Designer.cs">
+      <DependentUpon>201706161429347_Initial2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ServerModel.cs" />
@@ -171,6 +181,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706151517208_Initial.resx">
       <DependentUpon>201706151517208_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706161420469_Initial1.resx">
+      <DependentUpon>201706161420469_Initial1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706161429347_Initial2.resx">
+      <DependentUpon>201706161429347_Initial2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

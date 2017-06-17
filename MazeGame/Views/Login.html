@@ -20,35 +20,27 @@
         <h1>Log in</h1>
         <h3>Use a local account to log in.</h3>
 
-        <form id="login-form" role="form" style="display: block;">
+        <form id="login-form" role="form" style="display: block;" data-bind="submit: login">
+            <!--Username-->
             <div class="form-group">
-                <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" style="width:30%;margin-top:30px;">
+                <input type="text" name="username" id="username"  data-bind="value: userName" tabindex="1" class="form-control" placeholder="Username" value="" style="width:30%;margin-top:30px;">
             </div>
+            <!--Password-->
             <div class="form-group">
-                <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" style="width:30%;">
+                <input type="password" name="password" id="password"  data-bind="value: password" tabindex="2" class="form-control" placeholder="Password" style="width:30%;">
             </div>
+            <!--Submit button-->
+            <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-login" value="Log In" style="width:30%;margin-top:10px;">
 
-            <div class="form-group">
-                <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-login" value="Log In" style="width:30%;margin-top:10px;">
-            </div>
-            <script>
-                $("#login-submit").click(function () {
-                    var name = $("#username").val();
-                $.getJSON(apiUrl + "/" + name)
-                .done(function (user) {
-                    alert(user.Name + " founded");
-                })
-                .fail(function (jqXHR, textStatus, err) {
-                    alert("user doesn't exist");
-                });
-            });
-            </script>
         </form>
 
     </div> <!-- /container -->
 
+    <script src="../Scripts/jquery-3.2.1.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../Scripts/navbar.js"></script>
+    <script src="../Scripts/knockout-3.4.2.js"></script>
+    <script src="../Scripts/app.js"></script>
 
 </body>
 </html>
