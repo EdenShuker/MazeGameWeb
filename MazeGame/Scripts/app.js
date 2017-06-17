@@ -15,18 +15,11 @@
             alert(this.password1 + " " + data.Password);
             if (this.password1 === data.Password) {
                 sessionStorage.setItem('user', this.name1);
-                // apply logout
-                $("#btnLog").on("click", function () {
-                    sessionStorage.removeItem('user');
-                    $("#btnLog").off("click");
-                    window.location.href = "../Views/Login.html";
-                });
                 alert("passwords match");
                 window.location.href = "../index.html";
             } else {
                 alert("passwords doesn't match");
             }
-
         })
             .fail(function (jqXHR, textStatus, err) {
                 alert("user doesn't exist");
@@ -38,7 +31,7 @@
         if (self.userName() === "" || self.email() === "" || self.password() === "" || self.confirm_password() === "") {
             alert("Fill all the fields");
         } else {
-            if (self.email().includes("@") && self.password() == self.confirm_password()) {
+            if (self.email().includes("@") && self.password() === self.confirm_password()) {
                 var user = {
                     Name: self.userName(),
                     Email: self.email(),

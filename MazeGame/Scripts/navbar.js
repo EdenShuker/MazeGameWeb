@@ -10,8 +10,8 @@ var navbar =
                 <li><a href='../Views/UserRankings.html'>User Rankings</a></li>\
             </ul>\
             <ul class='nav navbar-nav navbar-right'>\
-                <li><a href='../Views/Register.html'>Register</a></li>\
-                <li><a id='btnLog' href='../Views/Login.html'>Login</a></li>\
+                <li><a id='regLbl' href='../Views/Register.html'>Register</a></li>\
+                <li><a id='logLbl' href='../Views/Login.html'>Login</a></li>\
             </ul>\
         </div>\
         <!--/.nav-collapse -->\
@@ -20,12 +20,12 @@ var navbar =
     <!--/.container-fluid -->\
     </nav>";
 
-var login = "href='../Views/Login.html'>Login";
-var logout = "href='#'>Logout";
+var login = ">Login";
+var logout = ">Logout";
 
 
 $(function () {
-    if (sessionStorage.user == null) {
+    if (sessionStorage.user === undefined) {
         // change text to login
         navbar = navbar.replace(logout, login);
         $(".navigationbar").html(navbar);
@@ -33,5 +33,19 @@ $(function () {
         // change text to logout
         navbar = navbar.replace(login, logout);
         $(".navigationbar").html(navbar);
+        // say hello to user
+        //$("#regLbl").innerHTML("Hello " + sessionStorage.getItem("user"));
+        // apply logout
+        $("#logLbl").on("click", function () {
+            alert("clicked me finally");
+            sessionStorage.removeItem('user');
+            $("#logLbl").off("click");
+            // change text back to login
+            navbar = navbar.replace(logout, login);
+            $(".navigationbar").html(navbar);
+            // change text to register
+            //$("#regLbl").innerHTML("Register");
+            window.location.href = "../Views/Login.html";
+        });
     }
 });
