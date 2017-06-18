@@ -34,7 +34,7 @@ namespace MazeModel
         /// <summary>
         /// Dictionary that maps client to the multiplayer game that he participates.
         /// </summary>
-        private Dictionary<TcpClient, MultiPlayerGame> playerToGame;
+        private Dictionary<string, MultiPlayerGame> playerToGame;
 
         /// <summary>
         /// Constructor.
@@ -44,7 +44,7 @@ namespace MazeModel
             availablesMPGames = new Dictionary<string, MultiPlayerGame>();
             unAvailablesMPGames = new Dictionary<string, MultiPlayerGame>();
             SPGames = new Dictionary<string, SinglePlayerGame>();
-            playerToGame = new Dictionary<TcpClient, MultiPlayerGame>();
+            playerToGame = new Dictionary<string, MultiPlayerGame>();
         }
 
         public Maze GenerateMaze(string nameOfGame, int rows, int cols)
@@ -103,7 +103,7 @@ namespace MazeModel
             return mazeInfo.Solution;
         }
 
-        public Maze StartGame(string nameOfGame, int rows, int cols, TcpClient client)
+        public Maze StartGame(string nameOfGame, int rows, int cols, string playerId)
         {
             if (GetMazeInfoOf(nameOfGame) != null)
             {
@@ -114,10 +114,10 @@ namespace MazeModel
             IMazeGenerator generator = new DFSMazeGenerator();
             Maze maze = generator.Generate(rows, cols);
             maze.Name = nameOfGame;
-            MultiPlayerGame mpGame = new MultiPlayerGame(maze, client, maze.InitialPos);
+            MultiPlayerGame mpGame = new MultiPlayerGame(maze, playerId, maze.InitialPos);
             // Add the game to the suitable dictionaries.
             this.availablesMPGames.Add(nameOfGame, mpGame);
-            this.playerToGame.Add(client, mpGame);
+            this.playerToGame.Add(playerId, mpGame);
             return maze;
         }
 
@@ -126,7 +126,7 @@ namespace MazeModel
             return availablesMPGames.Keys.ToArray();
         }
 
-        public Maze JoinTo(string nameOfGame, TcpClient player)
+        public Maze JoinTo(string nameOfGame, string playerId)
         {
             if (!this.availablesMPGames.ContainsKey(nameOfGame))
             {
@@ -136,24 +136,24 @@ namespace MazeModel
             // Assign the player to the needed game.
             MultiPlayerGame game = availablesMPGames[nameOfGame];
             Maze maze = game.Maze;
-            game.Guest = new PlayerInfo(player, maze.InitialPos);
+            game.Guest = new PlayerInfo(playerId, maze.InitialPos);
             // Remove the game from the available games and add it to the unavailable games.
             availablesMPGames.Remove(nameOfGame);
             unAvailablesMPGames.Add(nameOfGame, game);
-            playerToGame.Add(player, game);
+            playerToGame.Add(playerId, game);
             return maze;
         }
 
-        public string Play(string direction, TcpClient player)
+        public string Play(string direction, string playerId)
         {
-            if (!playerToGame.ContainsKey(player))
+            if (!playerToGame.ContainsKey(playerId))
             {
                 // Player tried to move although he is not participate in any game.
                 throw new Exception("Player is not in a game, need to be in a game to play");
             }
             // Find the player-info of the player.
-            MultiPlayerGame game = playerToGame[player];
-            PlayerInfo playerInfo = game.GetPlayer(player);
+            MultiPlayerGame game = playerToGame[playerId];
+            PlayerInfo playerInfo = game.GetPlayer(playerId);
             // Update the player location.
             bool validMove = playerInfo.Move(game.Maze, direction);
             if (!validMove)
@@ -172,7 +172,7 @@ namespace MazeModel
                 // Close multiplayer game with 2 players.
                 game = unAvailablesMPGames[nameOfGame];
                 unAvailablesMPGames.Remove(nameOfGame);
-                playerToGame.Remove(game.Guest.Player);
+                playerToGame.Remove(game.Guest.PlayerId);
             }
             else if (availablesMPGames.ContainsKey(nameOfGame))
             {
@@ -185,7 +185,7 @@ namespace MazeModel
                 // The game with the given name is not exist in the system.
                 throw new Exception($"There is no game with the name '{nameOfGame}'");
             }
-            playerToGame.Remove(game.Host.Player);
+            playerToGame.Remove(game.Host.PlayerId);
         }
 
         public bool IsGameBegun(string nameOfGame)
@@ -193,20 +193,20 @@ namespace MazeModel
             return unAvailablesMPGames.ContainsKey(nameOfGame);
         }
 
-        public bool IsClientInGame(TcpClient client)
+        public bool IsClientInGame(string client)
         {
             return playerToGame.ContainsKey(client);
         }
 
-        public TcpClient GetCompetitorOf(TcpClient player)
+        public string GetCompetitorOf(string playerId)
         {
-            if (!playerToGame.ContainsKey(player))
+            if (!playerToGame.ContainsKey(playerId))
             {
                 // Player is not participate in any game.
                 return null;
             }
-            MultiPlayerGame game = this.playerToGame[player];
-            return game.GetCompetitorOf(player).Player;
+            MultiPlayerGame game = this.playerToGame[playerId];
+            return game.GetCompetitorOf(playerId).PlayerId;
         }
 
         /// <summary>

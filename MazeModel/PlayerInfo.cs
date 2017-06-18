@@ -11,7 +11,7 @@ namespace MazeModel
         /// <summary>
         /// The player.
         /// </summary>
-        public TcpClient Player { get; set; }
+        public string PlayerId { get; set; }
 
         /// <summary>
         /// Player's location.
@@ -23,9 +23,9 @@ namespace MazeModel
         /// </summary>
         /// <param name="player">Player.</param>
         /// <param name="location">It's location.</param>
-        public PlayerInfo(TcpClient player, Position location)
+        public PlayerInfo(string playerId, Position location)
         {
-            this.Player = player;
+            this.PlayerId = playerId;
             this.Location = location;
         }
 

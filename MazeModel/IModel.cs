@@ -34,7 +34,7 @@ namespace MazeModel
         /// <param name="cols">Number of cols taht will be in the maze.</param>
         /// <param name="player">Host of the game</param>
         /// <returns>Maze that was generated to the game.</returns>
-        Maze StartGame(string nameOfGame, int rows, int cols, TcpClient player);
+        Maze StartGame(string nameOfGame, int rows, int cols, string playerId);
 
         /// <summary>
         /// Get all the available games that some player can join to.
@@ -48,7 +48,7 @@ namespace MazeModel
         /// <param name="nameOfGame">The name of game the player want to join to.</param>
         /// <param name="player">The player.</param>
         /// <returns>The maze of the game that the players participate.</returns>
-        Maze JoinTo(string nameOfGame, TcpClient player);
+        Maze JoinTo(string nameOfGame, string playerId);
 
         /// <summary>
         /// Play one move in some game.
@@ -56,7 +56,7 @@ namespace MazeModel
         /// <param name="direction">String represents the direction that the player want to move to.</param>
         /// <param name="player">Player that sent the message.</param>
         /// <returns>String represents the information of the movement.</returns>
-        string Play(string direction, TcpClient player);
+        string Play(string direction, string playerId);
 
         /// <summary>
         /// Close a multiplayer game.
@@ -76,13 +76,13 @@ namespace MazeModel
         /// </summary>
         /// <param name="client">The client to check for.</param>
         /// <returns>True if the client is inside a multiplayer game, false otherwise.</returns>
-        bool IsClientInGame(TcpClient client);
+        bool IsClientInGame(string client);
 
         /// <summary>
         /// Get the competitor of some player in multiplayer game.
         /// </summary>
         /// <param name="player">Player.</param>
         /// <returns>Its competitor, null if the given client is not in any game.</returns>
-        TcpClient GetCompetitorOf(TcpClient player);
+        string GetCompetitorOf(string playerId);
     }
 }

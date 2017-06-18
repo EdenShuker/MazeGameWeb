@@ -38,15 +38,47 @@ namespace MazeGame.Models
             return this.model.SolveMaze(nameOfGame, algorithm);
         }
 
-        //Maze StartGame(string nameOfGame, int rows, int cols)
-        //{
+        public Maze StartGame(string nameOfGame, int rows, int cols, string playerId)
+        {
+            return this.model.StartGame(nameOfGame, rows, cols, playerId);
+        }
 
-        //}
-
-        string[] GetAvailableGames()
+        public string[] GetAvailableGames()
         {
             return this.model.GetAvailableGames();
         }
+
+        public Maze JoinTo(string nameOfGame, string playerId)
+        {
+            return this.model.JoinTo(nameOfGame, playerId);
+        }
+
+        public string Play(string direction, string playerId)
+        {
+            return this.model.Play(direction, playerId);
+        }
+
+        public void Close(string nameOfGame)
+        {
+            this.model.Close(nameOfGame);
+        }
+
+        public bool IsGameBegun(string nameOfGame)
+        {
+            return this.model.IsGameBegun(nameOfGame);
+        }
+
+        public bool IsClientInGame(string client)
+        {
+            return this.model.IsClientInGame(client);
+        }
+
+        public string GetCompetitorOf(string playerId)
+        {
+            return this.model.GetCompetitorOf(playerId);
+        }
+
+
     }
 }
 
