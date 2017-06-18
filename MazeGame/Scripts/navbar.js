@@ -6,7 +6,7 @@ var navbar =
             <ul class='nav navbar-nav'>\
                 <li><a href='../Views/SinglePlayerPage.html'>Single Game</a></li>\
                 <li><a href='../Views/MultiPlayerPage.html'>Multiplayer Game</a></li>\
-                <li><a href='#'>Settings</a></li>\
+                <li><a href='../Views/Settings.html'>Settings</a></li>\
                 <li><a href='../Views/UserRankings.html'>User Rankings</a></li>\
             </ul>\
             <ul class='nav navbar-nav navbar-right'>\
@@ -35,9 +35,9 @@ $(function () {
         $(".navigationbar").html(navbar);
         // say hello to user
         document.getElementById("regLbl").innerHTML = "Hello " + sessionStorage.getItem("user");
+        $("#regLbl").on("click", function() { return false }); // stop href of register
         // apply logout
         $("#logLbl").on("click", function () {
-            alert("clicked me finally");
             sessionStorage.removeItem('user');
             $("#logLbl").off("click");
             // change text back to login
@@ -45,6 +45,7 @@ $(function () {
             $(".navigationbar").html(navbar);
             // change text to register
             document.getElementById("regLbl").innerHTML = "Register";
+            $("#regLbl").off("click");
             //$("#regLbl").innerHTML("Register");
             window.location.href = "../Views/Login.html";
         });

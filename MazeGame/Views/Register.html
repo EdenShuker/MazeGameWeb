@@ -13,40 +13,40 @@
 </head>
 
 <body>
-    <script src="../Scripts/jquery-3.2.1.js"></script>
-    <div class="container">
-        <div class="navigationbar"></div>
-        <fieldset>
-            <legend class="">Register</legend>
-            <form id="register-form" role="form" style="display: block;" data-bind="submit: register">
-                <!--Username-->
-                <div class="form-group">
-                    <input type="text" name="username" id="username" data-bind="value: userName" tabindex="1" class="form-control" placeholder="Username" value="" style="width:25%;margin-top:30px;">
-                </div>
-                <!--Email-->
-                <div class="form-group">
-                    <input type="text" name="email" id="email" data-bind="value: email" tabindex="1" class="form-control" placeholder="Email" value="" style="width:25%;">
-                </div>
-                <!--Password-->
-                <div class="form-group">
-                    <input type="password" name="password" id="password" data-bind="value: password" tabindex="2" class="form-control" placeholder="Password" style="width:25%;">
-                </div>
-                <!--Confirm Password-->
-                <div class="form-group">
-                    <input type="password" name="confirm_password" id="confirm_password" data-bind="value: confirm_password" tabindex="2" class="form-control" placeholder="Confirm Password" style="width:25%;">
-                </div>
-                <!--Submit button-->
-                <input type="submit" name="register-submit" id="register-submit" class="btn btn-login" value="Register" style="width:25%;margin-top:10px;font-size:17px;">
 
-            </form>
-        </fieldset>
-    </div> <!-- /container -->
+<div class="container">
+    <div class="navigationbar"></div>
+    <fieldset>
+        <legend class="">Register</legend>
+        <form id="register-form" role="form" style="display: block;" data-bind="submit: register">
+            <!--Username-->
+            <div class="form-group">
+                <input type="text" name="username" id="username" data-bind="value: userName" tabindex="1" class="form-control" placeholder="Username" value="" style="width: 25%; margin-top: 30px;">
+            </div>
+            <!--Email-->
+            <div class="form-group">
+                <input type="text" name="email" id="email" data-bind="value: email" tabindex="1" class="form-control" placeholder="Email" value="" style="width: 25%;">
+            </div>
+            <!--Password-->
+            <div class="form-group">
+                <input type="password" name="password" id="password" data-bind="value: password" tabindex="2" class="form-control" placeholder="Password" style="width: 25%;">
+            </div>
+            <!--Confirm Password-->
+            <div class="form-group">
+                <input type="password" name="confirm_password" id="confirm_password" data-bind="value: confirm_password" tabindex="2" class="form-control" placeholder="Confirm Password" style="width: 25%;">
+            </div>
+            <!--Submit button-->
+            <input type="submit" name="register-submit" id="register-submit" class="btn btn-login" value="Register" style="width: 25%; margin-top: 10px; font-size: 17px;">
 
+        </form>
+    </fieldset>
+</div> <!-- /container -->
 
-    <script src="../Scripts/knockout-3.4.2.js"></script>
-    <script src="../Scripts/app.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../Scripts/navbar.js"></script>
+<script src="../Scripts/jquery-3.2.1.js"></script>
+<script src="../Scripts/knockout-3.4.2.js"></script>
+<script src="../Scripts/userLog.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../Scripts/navbar.js"></script>
 
 </body>
 </html>

@@ -19,21 +19,24 @@
         <div class="page-header"><h2>Single Player Game</h2></div>
         <div class="col-sm-4 form-horizontal">
             <div class="form-group">
+                <!--name-->
                 <label for="mazeName" class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="mazeName" />
+                    <input type="text" class="form-control" id="mazeName"/>
                 </div>
             </div>
             <div class="form-group">
+                <!--rows-->
                 <label for="rows" class="col-sm-2 control-label">Rows</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="rows" />
+                    <input type="text" class="form-control" id="rows" data-bind="value: rows"/>
                 </div>
             </div>
             <div class="form-group">
+                <!--cols-->
                 <label for="cols" class="col-sm-2 control-label">Cols</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="cols" />
+                    <input type="text" class="form-control" id="cols" data-bind="value: cols"/>
                 </div>
             </div>
             <!--start game-->
@@ -42,7 +45,7 @@
             </div>
             <!--Search algo-->
             <div class="form-group">
-                <select name="Search Algo" id="searchAlgo">
+                <select name="Search Algo" id="searchAlgo" data-bind="value: searchAlgo">
                     <option value="0">BFS</option>
                     <option value="1">DFS</option>
                 </select>
@@ -59,6 +62,7 @@
         </div>
 
         <script src="../Scripts/jquery-3.2.1.js"></script>
+        <script src="../Scripts/knockout-3.4.2.js"></script>
         <script src="../Scripts/JQuery.mazeBoard.js"></script>
         <script src="../Scripts/startSingleGame.js"></script>
         <script src="../Scripts/solveMaze.js"></script>

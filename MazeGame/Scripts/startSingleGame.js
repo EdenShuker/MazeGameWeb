@@ -1,4 +1,15 @@
-﻿$("#startGame").click(function() {
+﻿var ViewModel = function () {
+    var self = this;
+
+    // set values
+    self.rows = ko.observable(localStorage.getItem("rows"));
+    self.cols = ko.observable(localStorage.getItem("cols"));
+    self.searchAlgo = ko.observable(localStorage.getItem("searchAlgo"));
+}
+
+ko.applyBindings(new ViewModel());
+
+$("#startGame").click(function () {
     var name = $("#mazeName").val();
     var rows = $("#rows").val();
     var cols = $("#cols").val();

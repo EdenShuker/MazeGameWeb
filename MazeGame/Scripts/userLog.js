@@ -14,6 +14,7 @@
             this.password1 = self.password();
             alert(this.password1 + " " + data.Password);
             if (this.password1 === data.Password) {
+                // save user
                 sessionStorage.setItem('user', this.name1);
                 alert("passwords match");
                 window.location.href = "../index.html";
@@ -30,8 +31,10 @@
     self.register = function () {
         if (self.userName() === "" || self.email() === "" || self.password() === "" || self.confirm_password() === "") {
             alert("Fill all the fields");
+        } else if (!self.email().includes("@")) {
+            alert("Invalid email");
         } else {
-            if (self.email().includes("@") && self.password() === self.confirm_password()) {
+            if (self.password() === self.confirm_password()) {
                 var user = {
                     Name: self.userName(),
                     Email: self.email(),
@@ -50,7 +53,6 @@
             }
         }
     };
-
 };
 
 ko.applyBindings(new ViewModel());
