@@ -7,7 +7,7 @@ $('#dropdown-games').on('show.bs.dropdown', function () {
         dataType: "json",
         url: "../api/ListGames",
         success: function (recData) {
-            //var games = JsonConvert.DeserializeObject<string[]>(recData);
+            var games = JsonConvert.DeserializeObject(recData);
            
         },
         error: function (result) { alert("error " + result[0]); }

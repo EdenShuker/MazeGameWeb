@@ -19,7 +19,6 @@ $("#startGame").click(function () {
         dataType: "json",
         url: "../api/SingleGame/GenerateMaze/" + name + "/" + rows + "/" + cols,
         success: function(recData) {
-            // init
             // call plugin
             var mazeData = [recData["Rows"], recData["Cols"], recData["Maze"]];
             var myMazeBoard = $("#myCanvas").mazeBoard(
