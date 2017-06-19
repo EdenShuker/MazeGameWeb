@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.EntitySql;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.SignalR;
@@ -11,18 +12,32 @@ namespace MazeGame
 {
     public class GameHub : Hub
     {
-
-        public string StartGame(string nameOfGame, int rows, int cols)
+        public void StartGame(string nameOfGame, int rows, int cols)
         {
+            ServerModel model = ServerModel.GetInstance();
+            // current player
             string clientId = Context.ConnectionId;
-            Maze maze = ServerModel.GetInstance().StartGame(nameOfGame, rows, cols, clientId);
-            return maze.ToJSON();
+            Maze maze = model.StartGame(nameOfGame, rows, cols, clientId);
+            Clients.Client(clientId).drawBoard("myCanvas", maze,
+                "Views/Images/minion.gif", "Views/Images/Exit.png", true);
+            // competitor
+            string opponentId = model.GetCompetitorOf(clientId);
+            Clients.Client(opponentId).drawBoard("competitorCanvas", maze,
+                "Views/Images/pokemon.gif", "Views/Images/Exit.png", false);
         }
 
-        public string JoinTo(string nameOfGame)
+        public void JoinTo(string nameOfGame)
         {
-            Maze maze = ServerModel.GetInstance().JoinTo(nameOfGame, Context.ConnectionId);
-            return maze.ToJSON();
+            ServerModel model = ServerModel.GetInstance();
+            // current player
+            string clientId = Context.ConnectionId;
+            Maze maze = model.JoinTo(nameOfGame, Context.ConnectionId);
+            Clients.Client(clientId).drawBoard("myCanvas", maze,
+                "Views/Images/minion.gif", "Views/Images/Exit.png", true);
+            // competitor
+            string opponentId = model.GetCompetitorOf(clientId);
+            Clients.Client(opponentId).drawBoard("competitorCanvas", maze,
+                "Views/Images/pokemon.gif", "Views/Images/Exit.png", false);
         }
 
         public void Play(string direction)
@@ -31,7 +46,6 @@ namespace MazeGame
             string playerId = Context.ConnectionId;
             model.Play(direction, playerId);
             string opponentId = model.GetCompetitorOf(playerId);
-            // TODO: implement 'moveOtherPlayer' in client side.
             Clients.Client(opponentId).moveOtherPlayer(direction);
         }
 
