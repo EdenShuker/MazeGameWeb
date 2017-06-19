@@ -116,15 +116,17 @@ $("#startGame").click(function() {
         var cols = $("#cols").val();
 
         // start new game
-        multiGame.StartGame(name, rows, cols);
+        multiGame.server.StartGame(name, rows, cols);
     });
 });
 
 // set button-click of join-game
-$("#joinGame").click(function() {
-    // join to game
-    var name = $("#dropdown").val();
-    multiGame.server.JoinTo(name);
+$("#joinGame").click(function () {
+    $.connection.hub.start().done(function () {
+        // join to game
+        var name = $("#dropdown").val();
+        multiGame.server.JoinTo(name);
+    });
 });
 
 // todo: fill method
