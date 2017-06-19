@@ -4,41 +4,43 @@
 <head>
     <meta charset="utf-8">
     <title>Login</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="../Scripts/navbar.css" rel="stylesheet">
-
 </head>
 
 <body>
 
-<div class="container">
+<div class="w3-container">
+
     <div class="navigationbar"></div>
 
-    <h1>Log in</h1>
-    <h3>Use a local account to log in.</h3>
+    <div class="w3-display-container w3-padding-32">
 
-    <form id="login-form" role="form" style="display: block;" data-bind="submit: login">
-        <!--Username-->
-        <div class="form-group">
-            <input type="text" name="username" id="username" data-bind="value: userName" tabindex="1" class="form-control" placeholder="Username" value="" style="width: 30%; margin-top: 30px;">
+        <div class="w3-container w3-center w3-display-middle" style="width: 50%; height: 50%">
+            <div class="w3-container w3-black"><h1>Log in</h1></div>
+            <div class="w3-container"><h3>Use a local account to log in.</h3></div>
+            
+            <form id="login-form" role="form" data-bind="submit: login">
+                <!--Username-->
+                <div class="form-group">
+                    <input type="text" name="username" id="username" data-bind="value: userName" tabindex="1" class="form-control w3-border-0 w3-center w3-margin-top" placeholder="Username" value="">
+                </div>
+                <!--Password-->
+                <div class="form-group">
+                    <input type="password" name="password" id="password" data-bind="value: password" tabindex="2" class="form-control w3-margin w3-border-0 w3-center" placeholder="Password">
+                </div>
+                <!--Submit button-->
+                <input type="submit" name="login-submit" id="login-submit" class="w3-button w3-gray w3-hover-green w3-round-xlarge" value="Log In" style="width: 30%; margin-top: 10px;">
+            </form>
         </div>
-        <!--Password-->
-        <div class="form-group">
-            <input type="password" name="password" id="password" data-bind="value: password" tabindex="2" class="form-control" placeholder="Password" style="width: 30%;">
-        </div>
-        <!--Submit button-->
-        <input type="submit" name="login-submit" id="login-submit" class="btn btn-login" value="Log In" style="width: 30%; margin-top: 10px;">
 
-    </form>
 
-</div> <!-- /container -->
+    </div>
+
+</div>
 
 <script src="../Scripts/jquery-3.2.1.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js"></script>
 <script src="../Scripts/navbar.js"></script>
+<link href="../Scripts/css/W3.css" rel="stylesheet"/>
+<link href="../Scripts/css/navbar.css" rel="stylesheet">
 <script src="../Scripts/knockout-3.4.2.js"></script>
 <script src="../Scripts/userLog.js"></script>
 

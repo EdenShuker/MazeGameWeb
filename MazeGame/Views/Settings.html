@@ -3,46 +3,55 @@
 <head>
     <meta charset="utf-8" />
     <title>Settings</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="../Scripts/navbar.css" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
-        <div class="navigationbar"></div>
-        <fieldset>
-            <legend class="">Settings</legend>
-            <form id="register-form" role="form" style="display: block;" data-bind="submit: saveSettings">
-                <!--Rows-->
-                <label for="rows" class="col-sm-2 control-label">Rows</label>
-                <div class="form-group">
-                    <input type="text" name="rows" id="rows" data-bind="value: rows" tabindex="1" class="form-control" style="width:25%;margin-top:30px;">
-                </div>
-                <!--Cols-->
-                <label for="cols" class="col-sm-2 control-label">Cols</label>
-                <div class="form-group">
-                    <input type="text" name="cols" id="cols" data-bind="value: cols" tabindex="1" class="form-control" style="width:25%;">
-                </div>
-                <!--Search algo-->
-                <div class="form-group">
-                    <select name="searchAlgo" id="searchAlgo" data-bind="value: searchAlgo">
-                        <option value="0">BFS</option>
-                        <option value="1">DFS</option>
-                    </select>
-                </div>
-                <!--Submit button-->
-                <input type="submit" name="saveSettings-submit" id="saveSettings-submit" class="btn btn-login" value="Save" style="width:25%;margin-top:10px;font-size:17px;">
+    <div class="w3-container">
 
-            </form>
-        </fieldset>
-    </div> <!-- /container -->
+        <div class="navigationbar"></div>
+
+        <div class="w3-display-container w3-padding-32">
+            <div class="w3-card-4 w3-center w3-display-middle" style="width: 30%; height: 50%">
+
+                <div class="w3-container w3-black"><h1>Settings</h1></div>
+
+                <fieldset>
+                    <form id="register-form" role="form" class="w3-display-container" data-bind="submit: saveSettings">
+                        <!--Rows-->
+                        <div class="form-group w3-padding-32 w3-display-container">
+                            <label for="rows" class="col-sm-2 control-label w3-display-left w3-margin-left">Rows</label>
+                            <input type="text" name="rows" id="rows" data-bind="value: rows" tabindex="1" class="form-control w3-input w3-display-right w3-margin-right" style="width: 50%">
+                        </div>
+                        <!--Cols-->
+                        <div class="form-group w3-padding-32 w3-display-container">
+                            <label for="cols" class="col-sm-2 control-label w3-display-left w3-margin-left">Cols</label>
+                            <input type="text" name="cols" id="cols" data-bind="value: cols" tabindex="1" class="form-control w3-input w3-display-right w3-margin-right" style="width:50%;">
+                        </div>
+                        <!--Search algo-->
+                        <div class="form-group w3-padding-32 w3-display-container">
+                            <label for="searchAlgo" class="col-sm-2 control-label w3-display-left w3-margin-left">Search algorithm</label>
+                            <select name="searchAlgo" id="searchAlgo" data-bind="value: searchAlgo" class="w3-display-right w3-margin-right">
+                                <option value="0">BFS</option>
+                                <option value="1">DFS</option>
+                            </select>
+                        </div>
+                        <!--Submit button-->
+                        <div class="w3-padding-16">
+                            <input type="submit" name="saveSettings-submit" id="saveSettings-submit" class="w3-button w3-gray w3-hover-green w3-round-xlarge" value="Save">
+                        </div>
+
+                    </form>
+                </fieldset>
+
+            </div>
+        </div>
+
+    </div>
 
     <script src="../Scripts/jquery-3.2.1.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../Scripts/navbar.js"></script>
+    <link href="../Scripts/css/W3.css" rel="stylesheet" />
+    <link href="../Scripts/css/navbar.css" rel="stylesheet">
     <script src="../Scripts/knockout-3.4.2.js"></script>
     <script src="../Scripts/settings.js"></script>
 
