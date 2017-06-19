@@ -1,30 +1,21 @@
 var navbar =
-    " <nav id='navbar' class='navbar navbar-inverse'>\
-        <div class='container-fluid'>\
-        <div class='navbar-header'><a class='navbar-brand' href='../index.html'>Maze</a></div>\
-        <div id='mazeNavbar' class='navbar-collapse collapse'>\
-            <ul class='nav navbar-nav'>\
-                <li><a href='../Views/SinglePlayerPage.html'>Single Game</a></li>\
-                <li><a href='../Views/MultiPlayerPage.html'>Multiplayer Game</a></li>\
-                <li><a href='../Views/Settings.html'>Settings</a></li>\
-                <li><a href='../Views/UserRankings.html'>User Rankings</a></li>\
-            </ul>\
-            <ul class='nav navbar-nav navbar-right'>\
-                <li><a id='regLbl' href='../Views/Register.html'>Register</a></li>\
-                <li><a id='logLbl' href='../Views/Login.html'>Login</a></li>\
-            </ul>\
-        </div>\
-        <!--/.nav-collapse -->\
-        </div>\
-        \
-    <!--/.container-fluid -->\
-    </nav>";
+    " <nav id='navbar'>\
+    <div class='w3-bar w3-black w3-round-xlarge'>\
+        <a class='w3-bar-item w3-button' href='../index.html'>Maze</a>\
+        <a href='../Views/SinglePlayerPage.html' class='w3-bar-item w3-button'>Single Game</a>\
+        <a href='../Views/MultiPlayerPage.html' class='w3-bar-item w3-button'>Multiplayer Game</a>\
+        <a href='../Views/Settings.html' class='w3-bar-item w3-button'>Settings</a>\
+        <a href='../Views/UserRankings.html' class='w3-bar-item w3-button'>User Rankings</a>\
+        <a id='logLbl' href='../Views/Login.html' class='w3-bar-item w3-button w3-right'>Login</a>\
+        <a id='regLbl' href='../Views/Register.html' class='w3-bar-item w3-button w3-right'>Register</a>\
+    </div >\
+</nav >";
 
 var login = ">Login";
 var logout = ">Logout";
 
 
-$(function () {
+$(function() {
     if (sessionStorage.user === undefined) {
         // change text to login
         navbar = navbar.replace(logout, login);
@@ -35,19 +26,21 @@ $(function () {
         $(".navigationbar").html(navbar);
         // say hello to user
         document.getElementById("regLbl").innerHTML = "Hello " + sessionStorage.getItem("user");
-        $("#regLbl").on("click", function() { return false }); // stop href of register
+        // stop href of register
+        $("#regLbl").on("click", function() { return false });
         // apply logout
-        $("#logLbl").on("click", function () {
-            sessionStorage.removeItem('user');
-            $("#logLbl").off("click");
-            // change text back to login
-            navbar = navbar.replace(logout, login);
-            $(".navigationbar").html(navbar);
-            // change text to register
-            document.getElementById("regLbl").innerHTML = "Register";
-            $("#regLbl").off("click");
-            //$("#regLbl").innerHTML("Register");
-            window.location.href = "../Views/Login.html";
-        });
+        $("#logLbl").on("click",
+            function() {
+                sessionStorage.removeItem('user');
+                $("#logLbl").off("click");
+                // change text back to login
+                navbar = navbar.replace(logout, login);
+                $(".navigationbar").html(navbar);
+                // change text to register
+                document.getElementById("regLbl").innerHTML = "Register";
+                $("#regLbl").off("click");
+                //$("#regLbl").innerHTML("Register");
+                window.location.href = "../Views/Login.html";
+            });
     }
 });

@@ -2,34 +2,24 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>navbar</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Scripts/css/W3.css"/>
 </head>
 
 <body>
-    <nav class='navbar navbar-inverse'>
-        <div class='container-fluid'>
-            <div class='navbar-header'>
-                <a class='navbar-brand' href='../index.html'>Maze</a>
-            </div>
-            <div id='mazeNavbar' class='navbar-collapse collapse'>
-                <ul class='nav navbar-nav'>
-                    <li><a href='../Views/SinglePlayerPage.html'>Single Game</a></li>
-                    <li><a href='#'>Multiplayer Game</a></li>
-                    <li><a href='#'>Settings</a></li>
-                    <li><a href='../Views/UserRankings.html'>User Rankings</a></li>
-                </ul><ul class='nav navbar-nav navbar-right'>
-                    <li>
-                        <a href='../Views/Register.html'>Register</a>
-                    </li>
-                    <li><a href='../Views/Login.html'>Login</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-    </nav>
-    <script src="Scripts/jquery-3.2.1.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+<nav id='navbar'>
+    <div class='w3-bar w3-black' style='text-align: center; display: inline-block; margin: 20px auto 20px auto'>
+        <a class='w3-bar-item w3-button' href='../index.html'>Maze</a>
+        <a href='../Views/SinglePlayerPage.html' class='w3-bar-item w3-button'>Single Game</a>
+        <a href='../Views/MultiPlayerPage.html' class='w3-bar-item w3-button'>Multiplayer Game</a>
+        <a href='../Views/Settings.html' class='w3-bar-item w3-button'>Settings</a>
+        <a href='../Views/UserRankings.html' class='w3-bar-item w3-button'>User Rankings</a>
+        <a id='logLbl' href='../Views/Login.html' class='w3-bar-item w3-button' style='float: right; overflow: hidden'>Login</a>
+        <a id='regLbl' href='../Views/Register.html' class='w3-bar-item w3-button' style='float: right; overflow: hidden'>Register</a>
+    </div>
+</nav>
+
 </body>
 </html>

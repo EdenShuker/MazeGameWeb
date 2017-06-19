@@ -4,43 +4,45 @@
     <meta charset="utf-8"/>
     <title>Rank Table</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../Scripts/navbar.css" rel="stylesheet">
-    <link href="../Scripts/userRankings.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="container">
+<div class="w3-container">
+    
     <div class="navigationbar"></div>
+    <div class="w3-container w3-padding-16">
+        <div class="w3-card-4">
+            
+            <div class="w3-container w3-black"><h2>Rank Table</h2></div>
 
-    <div class="panel-heading">
-        <h2>Rank Table</h2>
+            <table class="w3-table-all w3-centered">
+                <!-- first static row -->
+                <tr class="w3-green">
+                    <th><span>Rank</span></th>
+                    <th><span>Name</span></th>
+                    <th><span>Wins</span></th>
+                    <th><span>Losses</span></th>
+                </tr>
+                <!-- ko foreach: userRankings -->
+                <tr class="w3-hover-pale-green">
+                    <td><span data-bind="text: Rank"></span></td>
+                    <th class="w3-text-blue"><span data-bind="text: Name"></span></th>
+                    <td><span data-bind="text: Wins"></span></td>
+                    <td><span data-bind="text: Losses"></span></td>
+                </tr>
+                <!-- /ko -->
+            </table>
+
+        </div>
     </div>
-
-    <table class="table">
-        <!-- first static row -->
-        <tr class="row">
-            <th><span>Rank</span></th>
-            <th><span>Name</span></th>
-            <th><span>Wins</span></th>
-            <th><span>Losses</span></th>
-        </tr>
-        <!-- ko foreach: userRankings -->
-        <tr class="row">
-            <td><span data-bind="text: Rank"></span></td>
-            <td><span data-bind="text: Name"></span></td>
-            <td><span data-bind="text: Wins"></span></td>
-            <td><span data-bind="text: Losses"></span></td>
-        </tr>
-        <!-- /ko -->
-    </table>
 </div>
-
+    
 <script src="../Scripts/jquery-3.2.1.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js"></script>
 <script src="../Scripts/navbar.js"></script>
+<link href="../Scripts/css/W3.css" rel="stylesheet" />
+<link href="../Scripts/navbar.css" rel="stylesheet">
 <script src="../Scripts/knockout-3.4.2.js"></script>
 <script src="../Scripts/rankTable.js"></script>
+
 </body>
 </html>

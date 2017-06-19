@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
+    <Content Include="Scripts\css\W3.css" />
     <Content Include="Scripts\listGames.js" />
     <Content Include="Scripts\settings.js" />
     <Content Include="Scripts\userLog.js" />
@@ -139,7 +140,6 @@
     <Content Include="Scripts\rankTable.js" />
     <Content Include="Scripts\solveMaze.js" />
     <Content Include="Scripts\startSingleGame.js" />
-    <Content Include="Scripts\userRankings.css" />
     <Content Include="Views\HtmlPage1.html" />
     <Content Include="Views\Images\Exit.png" />
     <Content Include="Views\Images\minion.gif" />
