@@ -124,7 +124,6 @@
   <ItemGroup>
     <Content Include="index.html" />
     <Content Include="Scripts\css\W3.css" />
-    <Content Include="Scripts\listGames.js" />
     <Content Include="Scripts\settings.js" />
     <Content Include="Scripts\userLog.js" />
     <Content Include="Scripts\homePage.js" />
@@ -167,7 +166,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ListGamesController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SingleGameController.cs" />
     <Compile Include="Controllers\UserRankingsController.cs" />

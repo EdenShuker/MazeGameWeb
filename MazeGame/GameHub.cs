@@ -7,9 +7,11 @@ using Microsoft.AspNet.SignalR;
 using MazeLib;
 using MazeGame.Models;
 using Newtonsoft.Json.Linq;
+using Microsoft.AspNet.SignalR.Hubs;
 
 namespace MazeGame
 {
+    [HubName("gameHub")]
     public class GameHub : Hub
     {
         public void StartGame(string nameOfGame, int rows, int cols)
@@ -18,12 +20,6 @@ namespace MazeGame
             // current player
             string clientId = Context.ConnectionId;
             Maze maze = model.StartGame(nameOfGame, rows, cols, clientId);
-            Clients.Client(clientId).drawBoard("myCanvas", maze,
-                "Views/Images/minion.gif", "Views/Images/Exit.png", true);
-            // competitor
-            string opponentId = model.GetCompetitorOf(clientId);
-            Clients.Client(opponentId).drawBoard("competitorCanvas", maze,
-                "Views/Images/pokemon.gif", "Views/Images/Exit.png", false);
         }
 
         public void JoinTo(string nameOfGame)
@@ -56,6 +52,13 @@ namespace MazeGame
             string opponentId = model.GetCompetitorOf(Context.ConnectionId);
             // TODO: implement 'closeGame' method in client side.
             Clients.Client(opponentId).closeGame();
+        }
+
+
+        public void GetAvailablesGame()
+        {
+            string[] games = ServerModel.GetInstance().GetAvailableGames();
+            Clients.Client(Context.ConnectionId).presentAvailableGames(games);
         }
     }
 }

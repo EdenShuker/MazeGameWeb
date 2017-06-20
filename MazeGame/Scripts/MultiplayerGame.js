@@ -133,3 +133,13 @@ $("#joinGame").click(function () {
 multiGame.client.closeGame = function() {
     alert("close");
 }
+
+multiGame.client.GetAvailablesGame = function () {
+    alert("list");
+    //var list = document.getElementById("dropdown");
+
+}
+
+$('#dropdown-games').on('show.bs.dropdown', function () {
+    multiGame.server.GetAvailablesGame();
+});
