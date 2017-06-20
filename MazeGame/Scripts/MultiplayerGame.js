@@ -108,24 +108,30 @@ multiGame.client.moveOtherPlayer = function(direction) {
 };
 
 // set button-click of start-new-game
-$("#startGame").click(function() {
-    $.connection.hub.start().done(function() {
-        // extract info
-        var name = $("#mazeName").val();
-        var rows = $("#rows").val();
-        var cols = $("#cols").val();
+$(document).ready(function() {
+    $("#startGame").click(function () {
+        alert("in start game");
+        $.connection.hub.start().done(function () {
+            // extract info
+            var name = $("#mazeName").val();
+            var rows = $("#rows").val();
+            var cols = $("#cols").val();
 
-        // start new game
-        multiGame.server.StartGame(name, rows, cols);
+            // start new game
+            multiGame.server.StartGame(name, rows, cols);
+        });
     });
 });
 
 // set button-click of join-game
-$("#joinGame").click(function () {
-    $.connection.hub.start().done(function () {
-        // join to game
-        var name = $("#dropdown").val();
-        multiGame.server.JoinTo(name);
+$(document).ready(function() {
+    $("#joinGame").click(function () {
+        alert("in join");
+        $.connection.hub.start().done(function () {
+            // join to game
+            var name = $("#dropdown").val();
+            multiGame.server.JoinTo(name);
+        });
     });
 });
 
