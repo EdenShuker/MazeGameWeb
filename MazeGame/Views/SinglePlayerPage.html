@@ -6,84 +6,58 @@
 </head>
 <body>
 
-<div class="w3-container">
+    <div class="w3-container">
 
-    <div class="navigationbar"></div>
+        <div class="navigationbar"></div>
+        
+        <div class="w3-container w3-black w3-margin w3-center"><h1>Single Player Game</h1></div>
+        
+        <div class="w3-display-container w3-margin">
+            <div style="width: 30%; float: left" class="w3-center">
+                <fieldset class="w3-border-0">
+                    <form>
+                        <!--Name-->
+                        <div class="w3-padding-24 w3-display-container">
+                            <label for="rows" class="w3-display-left w3-margin-left">Name</label>
+                            <input id="mazeName" type="text" tabindex="1" class="w3-input w3-display-right w3-margin-right" style="width: 50%">
+                        </div>
+                        <!--Rows-->
+                        <div class="w3-padding-24 w3-display-container">
+                            <label for="rows" class="w3-display-left w3-margin-left">Rows</label>
+                            <input type="text" name="rows" id="rows" data-bind="value: rows" tabindex="1" class="w3-input w3-display-right w3-margin-right" style="width: 50%">
+                        </div>
+                        <!--Cols-->
+                        <div class="w3-padding-24 w3-display-container">
+                            <label for="cols" class="w3-display-left w3-margin-left">Cols</label>
+                            <input type="text" name="cols" id="cols" data-bind="value: cols" tabindex="1" class="w3-input w3-display-right w3-margin-right" style="width: 50%;">
+                        </div>
+                        <!--Start button-->
+                        <div class="w3-padding-16">
+                            <button type="submit" id="startGame" class="w3-button w3-round-xlarge w3-green">Start New Game</button>
+                        </div>
 
-    <div class="w3-display-container w3-padding-32">
-
-        <div class="w3-container w3-center w3-display-left" style="width: 50%; height: 50%">
-            <div class="w3-container w3-black">
-                <h1>Single Player Game</h1>
+                        <!--Search algo-->
+                        <div class="w3-padding-24 w3-display-container">
+                            <label for="searchAlgo" class="w3-display-left w3-margin-left">Search</label>
+                            <select name="searchAlgo" id="searchAlgo" data-bind="value: searchAlgo" class="w3-display-right w3-margin-right">
+                                <option value="0">BFS</option>
+                                <option value="1">DFS</option>
+                            </select>
+                        </div>
+                        <!--Solve button-->
+                        <div class="w3-padding-16">
+                            <button type="submit" id="solveGame" class="w3-button w3-round-xlarge w3-green">Solve</button>
+                        </div>
+                    </form>
+                </fieldset>
             </div>
-
-            <div class="w3-container">
-                <div class="w3-display-container">
-                    <!--name-->
-                    <label for="mazeName" class="w3-display-left">Name</label>
-                    <input type="text" class="w3-input w3-display-right" id="mazeName"/>
-                </div>
-                <div class="w3-display-container w3-margin-top">
-                    <!--rows-->
-                    <label for="rows" class="w3-display-left">Rows</label>
-                    <input type="text" class="w3-input w3-display-right" id="rows" data-bind="value: rows"/>
-                </div>
-                <div class="w3-display-container w3-margin-top">
-                    <!--cols-->
-                    <label for="cols" class="w3-display-left">Cols</label>
-                    <input type="text" class="w3-input w3-display-right" id="cols" data-bind="value: cols"/>
-                </div>
-                <!--start game-->
-                <div class="w3-container w3-margin-top">
-                    <button type="submit" id="startGame" class="w3-button w3-round-xlarge w3-green">Start New Game</button>
-                </div>
-
-                <!--Search algo-->
-                <div class="w3-display-container w3-margin-top">
-                    <label class="w3-display-left">Search</label>
-                    <select name="Search Algo" class="w3-display-right" id="searchAlgo" data-bind="value: searchAlgo">
-                        <option value="0">BFS</option>
-                        <option value="1">DFS</option>
-                    </select>
-                </div>
-                <!--solve button-->
-                <div class="w3-container w3-margin-top">
-                    <button type="submit" id="solveGame" class="w3-button w3-round-xlarge w3-green">Solve Game</button>
-                </div>
-
+            <div style="width: 70%; float: right">
+                <canvas id="myCanvas" tabindex="1" class="maze-board" width="500" height="500" style="border:2px solid #000000;"></canvas>
             </div>
         </div>
 
     </div>
-
-</div>
-
-<!--<div class="w3-container">
-
-    <div class="navigationbar"></div>
-    <div class="w3-display-container w3-padding-32">
-        <div class="w3-container w3-center w3-display-middle" style="width: 90%; height: 90%">
-            <div class="w3-container w3-black w3-center">
-                <h1>Single Player Game</h1>
-            </div>
-
-            <div class="w3-display-container">
-                $1$form#1#
-                <div class="w3-container w3-display-left">
-
-
-                </div>
-
-                $1$board#1#
-                <div class="w3-container w3-display-right">
-                    $1$canvas#1#
-                    <canvas id="myCanvas" tabindex="1" class="maze-board" width="500" height="500" style="border: 2px solid #000000;"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>-->
+    
 
 <script src="../Scripts/jquery-3.2.1.js"></script>
 <script src="../Scripts/knockout-3.4.2.js"></script>
