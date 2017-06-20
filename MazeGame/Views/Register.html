@@ -4,49 +4,56 @@
 <head>
     <meta charset="utf-8">
     <title>Register</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="../Scripts/navbar.css" rel="stylesheet">
-    <link href="register.css" rel="stylesheet">
 </head>
 
 <body>
 
-<div class="container">
-    <div class="navigationbar"></div>
-    <fieldset>
-        <legend class="">Register</legend>
-        <form id="register-form" role="form" style="display: block;" data-bind="submit: register">
-            <!--Username-->
-            <div class="form-group">
-                <input type="text" name="username" id="username" data-bind="value: userName" tabindex="1" class="form-control" placeholder="Username" value="" style="width: 25%; margin-top: 30px;">
-            </div>
-            <!--Email-->
-            <div class="form-group">
-                <input type="text" name="email" id="email" data-bind="value: email" tabindex="1" class="form-control" placeholder="Email" value="" style="width: 25%;">
-            </div>
-            <!--Password-->
-            <div class="form-group">
-                <input type="password" name="password" id="password" data-bind="value: password" tabindex="2" class="form-control" placeholder="Password" style="width: 25%;">
-            </div>
-            <!--Confirm Password-->
-            <div class="form-group">
-                <input type="password" name="confirm_password" id="confirm_password" data-bind="value: confirm_password" tabindex="2" class="form-control" placeholder="Confirm Password" style="width: 25%;">
-            </div>
-            <!--Submit button-->
-            <input type="submit" name="register-submit" id="register-submit" class="btn btn-login" value="Register" style="width: 25%; margin-top: 10px; font-size: 17px;">
+    <div class="w3-container">
 
-        </form>
-    </fieldset>
-</div> <!-- /container -->
+        <div class="navigationbar"></div>
+
+        <div class="w3-display-container w3-padding-32">
+            <div class="w3-card-4 w3-center w3-display-middle" style="width: 40%; height: 50%">
+
+                <div class="w3-container w3-black"><h1>Register</h1></div>
+
+                <fieldset class="w3-border-0">
+                    <form id="register-form" role="form" data-bind="submit: register" class="w3-display-container">
+                        <!--Username-->
+                        <div class="form-group w3-display-container w3-padding-32">
+                            <input type="text" name="username" id="username" data-bind="value: userName" tabindex="1" class="form-control w3-display-middle w3-input w3-center" placeholder="Username">
+                        </div>
+                        <!--Email-->
+                        <div class="form-group w3-display-container w3-padding-32">
+                            <input type="text" name="email" id="email" data-bind="value: email" tabindex="1" class="form-control w3-display-middle w3-input w3-center" placeholder="Email">
+                        </div>
+                        <!--Password-->
+                        <div class="form-group w3-display-container w3-padding-32">
+                            <input type="password" name="password" id="password" data-bind="value: password" tabindex="2" class="form-control w3-display-middle w3-input w3-center" placeholder="Password">
+                        </div>
+                        <!--Confirm Password-->
+                        <div class="form-group w3-display-container w3-padding-32">
+                            <input type="password" name="confirm_password" id="confirm_password" data-bind="value: confirm_password" tabindex="2" class="form-control w3-display-middle w3-input w3-center" placeholder="Confirm Password">
+                        </div>
+                        <!--Submit button-->
+                        <div class="w3-display-container w3-padding-32">
+                            <input type="submit" name="register-submit" id="register-submit" class="w3-button w3-round-xlarge w3-green w3-display-middle" value="Register">
+                        </div>
+
+                    </form>
+                </fieldset>
+
+            </div>
+        </div>
+
+    </div>
 
 <script src="../Scripts/jquery-3.2.1.js"></script>
+<script src="../Scripts/navbar.js"></script>
+<link href="../Scripts/css/W3.css" rel="stylesheet"/>
+<link href="../Scripts/css/navbar.css" rel="stylesheet">
 <script src="../Scripts/knockout-3.4.2.js"></script>
 <script src="../Scripts/userLog.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js"></script>
-<script src="../Scripts/navbar.js"></script>
 
 </body>
 </html>

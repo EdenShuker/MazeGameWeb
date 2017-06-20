@@ -18,20 +18,25 @@
             <div class="w3-container w3-black"><h1>Log in</h1></div>
             <div class="w3-container"><h3>Use a local account to log in.</h3></div>
             
-            <form id="login-form" role="form" data-bind="submit: login">
-                <!--Username-->
-                <div class="form-group">
-                    <input type="text" name="username" id="username" data-bind="value: userName" tabindex="1" class="form-control w3-border-0 w3-center w3-margin-top" placeholder="Username" value="">
-                </div>
-                <!--Password-->
-                <div class="form-group">
-                    <input type="password" name="password" id="password" data-bind="value: password" tabindex="2" class="form-control w3-margin w3-border-0 w3-center" placeholder="Password">
-                </div>
-                <!--Submit button-->
-                <input type="submit" name="login-submit" id="login-submit" class="w3-button w3-gray w3-hover-green w3-round-xlarge" value="Log In" style="width: 30%; margin-top: 10px;">
-            </form>
+            <div class="w3-container">
+                <fieldset class="w3-border-0">
+                    <form id="login-form" role="form" data-bind="submit: login" class="w3-display-container">
+                        <!--Username-->
+                        <div class="form-group w3-display-container w3-padding-32">
+                            <input type="text" name="username" id="username" data-bind="value: userName" tabindex="1" class="form-control w3-center w3-display-middle w3-input" placeholder="Username">
+                        </div>
+                        <!--Password-->
+                        <div class="form-group w3-display-container w3-padding-32">
+                            <input type="password" name="password" id="password" data-bind="value: password" tabindex="2" class="form-control w3-center w3-display-middle w3-input" placeholder="Password">
+                        </div>
+                        <!--Submit button-->
+                        <div class="w3-display-container w3-padding-32">
+                            <input type="submit" name="login-submit" id="login-submit" class="w3-button w3-green w3-round-xlarge w3-margin-bottom w3-display-middle" value="Log In"> 
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
         </div>
-
 
     </div>
 

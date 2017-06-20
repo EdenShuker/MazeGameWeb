@@ -2,71 +2,97 @@
 <html>
 <head>
     <title>Single Player Game</title>
-    <meta charset="utf-8" />
-    <!-- Bootstrap core CSS -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="../Scripts/navbar.css" rel="stylesheet">
-
+    <meta charset="utf-8"/>
 </head>
 <body>
-    <script src="../Scripts/jquery-3.2.1.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../Scripts/navbar.js"></script>
 
-    <div class="container body-content">
-        <div class="navigationbar"></div>
-        <div class="page-header"><h2>Single Player Game</h2></div>
-        <div class="col-sm-4 form-horizontal">
-            <div class="form-group">
-                <!--name-->
-                <label for="mazeName" class="col-sm-2 control-label">Name</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="mazeName"/>
+<div class="w3-container">
+
+    <div class="navigationbar"></div>
+
+    <div class="w3-display-container w3-padding-32">
+
+        <div class="w3-container w3-center w3-display-left" style="width: 50%; height: 50%">
+            <div class="w3-container w3-black">
+                <h1>Single Player Game</h1>
+            </div>
+
+            <div class="w3-container">
+                <div class="w3-display-container">
+                    <!--name-->
+                    <label for="mazeName" class="w3-display-left">Name</label>
+                    <input type="text" class="w3-input w3-display-right" id="mazeName"/>
                 </div>
-            </div>
-            <div class="form-group">
-                <!--rows-->
-                <label for="rows" class="col-sm-2 control-label">Rows</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="rows" data-bind="value: rows"/>
+                <div class="w3-display-container w3-margin-top">
+                    <!--rows-->
+                    <label for="rows" class="w3-display-left">Rows</label>
+                    <input type="text" class="w3-input w3-display-right" id="rows" data-bind="value: rows"/>
                 </div>
-            </div>
-            <div class="form-group">
-                <!--cols-->
-                <label for="cols" class="col-sm-2 control-label">Cols</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="cols" data-bind="value: cols"/>
+                <div class="w3-display-container w3-margin-top">
+                    <!--cols-->
+                    <label for="cols" class="w3-display-left">Cols</label>
+                    <input type="text" class="w3-input w3-display-right" id="cols" data-bind="value: cols"/>
                 </div>
-            </div>
-            <!--start game-->
-            <div class="form-group">
-                <button type="submit" id="startGame" class="btn btn-default">Start New Game</button>
-            </div>
-            <!--Search algo-->
-            <div class="form-group">
-                <select name="Search Algo" id="searchAlgo" data-bind="value: searchAlgo">
-                    <option value="0">BFS</option>
-                    <option value="1">DFS</option>
-                </select>
-            </div>
-            <!--solve button-->
-            <div class="form-group">
-                <button type="submit" id="solveGame" class="btn btn-default">Solve Game</button>
+                <!--start game-->
+                <div class="w3-container w3-margin-top">
+                    <button type="submit" id="startGame" class="w3-button w3-round-xlarge w3-green">Start New Game</button>
+                </div>
+
+                <!--Search algo-->
+                <div class="w3-display-container w3-margin-top">
+                    <label class="w3-display-left">Search</label>
+                    <select name="Search Algo" class="w3-display-right" id="searchAlgo" data-bind="value: searchAlgo">
+                        <option value="0">BFS</option>
+                        <option value="1">DFS</option>
+                    </select>
+                </div>
+                <!--solve button-->
+                <div class="w3-container w3-margin-top">
+                    <button type="submit" id="solveGame" class="w3-button w3-round-xlarge w3-green">Solve Game</button>
+                </div>
+
             </div>
         </div>
 
-        <!--canvas-->
-        <div class="col-sm-8 text-center">
-            <canvas id="myCanvas" tabindex="1" class="maze-board" width="500" height="500" style="border:2px solid #000000;"></canvas>
-        </div>
-
-        <script src="../Scripts/jquery-3.2.1.js"></script>
-        <script src="../Scripts/knockout-3.4.2.js"></script>
-        <script src="../Scripts/JQuery.mazeBoard.js"></script>
-        <script src="../Scripts/startSingleGame.js"></script>
-        <script src="../Scripts/solveMaze.js"></script>
     </div>
+
+</div>
+
+<!--<div class="w3-container">
+
+    <div class="navigationbar"></div>
+    <div class="w3-display-container w3-padding-32">
+        <div class="w3-container w3-center w3-display-middle" style="width: 90%; height: 90%">
+            <div class="w3-container w3-black w3-center">
+                <h1>Single Player Game</h1>
+            </div>
+
+            <div class="w3-display-container">
+                $1$form#1#
+                <div class="w3-container w3-display-left">
+
+
+                </div>
+
+                $1$board#1#
+                <div class="w3-container w3-display-right">
+                    $1$canvas#1#
+                    <canvas id="myCanvas" tabindex="1" class="maze-board" width="500" height="500" style="border: 2px solid #000000;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>-->
+
+<script src="../Scripts/jquery-3.2.1.js"></script>
+<script src="../Scripts/knockout-3.4.2.js"></script>
+<script src="../Scripts/navbar.js"></script>
+<link href="../Scripts/css/W3.css" rel="stylesheet"/>
+<link href="../Scripts/css/navbar.css" rel="stylesheet">
+<script src="../Scripts/JQuery.mazeBoard.js"></script>
+<script src="../Scripts/startSingleGame.js"></script>
+<script src="../Scripts/solveMaze.js"></script>
 
 </body>
 </html>

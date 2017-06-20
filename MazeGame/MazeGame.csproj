@@ -156,7 +156,6 @@
     <Content Include="Global.asax" />
     <Content Include="Views\MultiPlayerPage.html" />
     <Content Include="Views\Navbar.html" />
-    <Content Include="Views\register.css" />
     <Content Include="Views\Register.html" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\JQuery.mazeBoard.js" />
