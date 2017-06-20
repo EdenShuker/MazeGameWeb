@@ -20,6 +20,9 @@ namespace MazeGame
             // current player
             string clientId = Context.ConnectionId;
             Maze maze = model.StartGame(nameOfGame, rows, cols, clientId);
+            Clients.Client(clientId).drawBoard("myCanvas", maze.Rows, maze.Cols, maze.ToString().Replace("\n", ""),
+                maze.InitialPos.Row, maze.InitialPos.Col, maze.GoalPos.Row, maze.GoalPos.Col,
+                "../Views/Images/minion.gif", "../Views/Images/Exit.png", true);
         }
 
         public void JoinTo(string nameOfGame)
@@ -28,12 +31,18 @@ namespace MazeGame
             // current player
             string clientId = Context.ConnectionId;
             Maze maze = model.JoinTo(nameOfGame, Context.ConnectionId);
-            Clients.Client(clientId).drawBoard("myCanvas", maze,
-                "Views/Images/minion.gif", "Views/Images/Exit.png", true);
+            // my boards
+            Clients.Client(clientId).drawBoard("myCanvas", maze.Rows, maze.Cols, maze.ToString().Replace("\n", ""),
+                maze.InitialPos.Row, maze.InitialPos.Col, maze.GoalPos.Row, maze.GoalPos.Col,
+                "../Views/Images/minion.gif", "../Views/Images/Exit.png", true);
+            Clients.Client(clientId).drawBoard("myCanvas", maze.Rows, maze.Cols, maze.ToString().Replace("\n", ""),
+                maze.InitialPos.Row, maze.InitialPos.Col, maze.GoalPos.Row, maze.GoalPos.Col,
+                "../Views/Images/pokemon.gif", "../Views/Images/Exit.png", false);
             // competitor
             string opponentId = model.GetCompetitorOf(clientId);
-            Clients.Client(opponentId).drawBoard("competitorCanvas", maze,
-                "Views/Images/pokemon.gif", "Views/Images/Exit.png", false);
+            Clients.Client(opponentId).drawBoard("myCanvas", maze.Rows, maze.Cols, maze.ToString().Replace("\n", ""),
+                maze.InitialPos.Row, maze.InitialPos.Col, maze.GoalPos.Row, maze.GoalPos.Col,
+                "../Views/Images/pokemon.gif", "../Views/Images/Exit.png", false);
         }
 
         public void Play(string direction)

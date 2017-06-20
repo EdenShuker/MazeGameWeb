@@ -9,18 +9,20 @@ var cellWidth, cellHeight;
 
 // set the function to draw a board
 multiGame.client.drawBoard = function(canvasName,
-    maze,
+    rows, cols, mazeStr,
+    initRow, initCol,
+    goalRow, goalCol,
     playerImagePath,
     exitImagePath,
     isEnable) {
 
     // call plugin
-    var mazeData = [maze.Rows, maze.Cols, maze.ToString()];
+    var mazeData = [rows, cols, mazeStr];
     var board = $("#" + canvasName).mazeBoard(mazeData,
-        maze.InitialPos.Row,
-        maze.InitialPos.Col,
-        maze.GoalPos.Row,
-        maze.GoalPos.Col,
+        initRow,
+        initCol,
+        goalRow,
+        goalCol,
         playerImagePath,
         exitImagePath,
         isEnable,
@@ -107,45 +109,44 @@ multiGame.client.moveOtherPlayer = function(direction) {
         cellHeight);
 };
 
-// set button-click of start-new-game
 $(document).ready(function() {
-    $("#startGame").click(function () {
-        alert("in start game");
-        $.connection.hub.start().done(function () {
+    // set button-click of start-new-game
+    $("#startGame").click(function() {
+        $.connection.hub.start().done(function() {
             // extract info
             var name = $("#mazeName").val();
             var rows = $("#rows").val();
             var cols = $("#cols").val();
 
             // start new game
-            multiGame.server.StartGame(name, rows, cols);
+            multiGame.server.startGame(name, rows, cols);
         });
     });
-});
 
-// set button-click of join-game
-$(document).ready(function() {
+    // set button-click of join-game
     $("#joinGame").click(function () {
-        alert("in join");
         $.connection.hub.start().done(function () {
             // join to game
             var name = $("#dropdown").val();
             multiGame.server.JoinTo(name);
         });
     });
+
+    // drop down game list
+    $('#dropdown-games').on('show.bs.dropdown',
+        function () {
+            multiGame.server.GetAvailablesGame();
+        });
 });
 
 // todo: fill method
 multiGame.client.closeGame = function() {
     alert("close");
-}
+};
 
-multiGame.client.GetAvailablesGame = function () {
-    alert("list");
-    //var list = document.getElementById("dropdown");
-
-}
-
-$('#dropdown-games').on('show.bs.dropdown', function () {
-    multiGame.server.GetAvailablesGame();
-});
+multiGame.client.presentAvailableGames = function (games) {
+    var dropdown = $("#dropdown");
+    games.forEach(function (game) {
+        dropdown.append("<li>" + game + "</li>");
+    });
+};
