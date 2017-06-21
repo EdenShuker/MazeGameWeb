@@ -19,9 +19,6 @@ var movePlayerFunc;
         isEnable,
         funcMove) {
 
-        playerImg = document.getElementById("playerImg");
-        playerImg.src = playerImagePath;
-
         var canvas = this[0];
         context = this[0].getContext("2d");
         var rows = mazeData[0];
@@ -52,16 +49,12 @@ var movePlayerFunc;
             }
         }
         // draw player image
-        
-
-        //playerImg.width = cellWidth;
-        //playerImg.height = cellHeight;
+        playerImg = document.getElementById(playerImagePath);
+        playerImg.src = playerImagePath;
         context.drawImage(playerImg, initCol * cellWidth, initRow * cellHeight, cellWidth, cellHeight);
 
         // draw exit image
         var exitImg = document.getElementById("exitImg");
-        //exitImg.width = cellWidth;
-        //exitImg.height = cellHeight;
         exitImg.src = exitImagePath;
         context.drawImage(exitImg, exitCol * cellWidth, exitRow * cellHeight, cellWidth, cellHeight);
 
