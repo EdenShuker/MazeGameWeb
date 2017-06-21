@@ -60,14 +60,14 @@ multiGame.client.drawBoard = function (canvasName,
             }
             if (isNewMove) {
                 // if valid move --> notify
-                multiGame.server.Play(direction);
+                multiGame.server.play(direction);
             }
             return [playerRow, playerCol];
         });
     if (!isEnable) {
         // init competitor vars
-        competitorRow = maze.InitialPos.Row;
-        competitorCol = maze.InitialPos.Col;
+        competitorRow = recData["Start"]["Row"];
+        competitorCol = recData["Start"]["Col"];
         cellWidth = board[0].cellWidth;
         cellHeight = board[0].cellHeight;
         competitorContext = board[0].context;
@@ -144,8 +144,8 @@ $(document).ready(function () {
     // set button-click of join-game
     $("#joinGame").click(function () {
         // join to game
-        var name = $("#dropdown").val();
-        multiGame.server.JoinTo(name);
+        var name = $("#dropdown").text();
+        multiGame.server.joinTo(name);
     });
 
     // drop down game list

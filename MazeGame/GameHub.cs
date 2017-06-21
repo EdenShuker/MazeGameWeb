@@ -33,11 +33,11 @@ namespace MazeGame
             // my boards
             Clients.Client(clientId).drawBoard("myCanvas", maze.ToJSON(),
                 "../Views/Images/minion.gif", "../Views/Images/Exit.png", true);
-            Clients.Client(clientId).drawBoard("myCanvas", maze.ToJSON(),
+            Clients.Client(clientId).drawBoard("competitorCanvas", maze.ToJSON(),
                 "../Views/Images/pokemon.gif", "../Views/Images/Exit.png", false);
             // competitor
             string opponentId = model.GetCompetitorOf(clientId);
-            Clients.Client(opponentId).drawBoard("myCanvas", maze.ToJSON(),
+            Clients.Client(opponentId).drawBoard("competitorCanvas", maze.ToJSON(),
                 "../Views/Images/pokemon.gif", "../Views/Images/Exit.png", false);
         }
 
