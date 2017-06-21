@@ -9,20 +9,19 @@ var cellWidth, cellHeight;
 
 // set the function to draw a board
 multiGame.client.drawBoard = function(canvasName,
-    rows, cols, mazeStr,
-    initRow, initCol,
-    goalRow, goalCol,
+    recData,
     playerImagePath,
     exitImagePath,
     isEnable) {
 
+    recData = JSON.parse(recData);
     // call plugin
-    var mazeData = [rows, cols, mazeStr];
+    var mazeData = [recData["Rows"], recData["Cols"], recData["Maze"]];
     var board = $("#" + canvasName).mazeBoard(mazeData,
-        initRow,
-        initCol,
-        goalRow,
-        goalCol,
+        recData["Start"]["Row"],
+        recData["Start"]["Col"],
+        recData["End"]["Row"],
+        recData["End"]["Col"],
         playerImagePath,
         exitImagePath,
         isEnable,
