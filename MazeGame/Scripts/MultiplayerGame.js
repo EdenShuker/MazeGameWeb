@@ -110,9 +110,10 @@ multiGame.client.moveOtherPlayer = function (direction) {
 };
 
 multiGame.client.presentAvailableGames = function (games) {
-    var dropdown = $("#dropdown");
+    var i = 0;
+    var dropdown = $("#dropdown").empty();
     games.forEach(function (game) {
-        dropdown.append("<li>" + game + "</li>");
+        dropdown.append("<option value=" + i + ">" + game + "</option>");
     });
 };
 
@@ -125,15 +126,19 @@ multiGame.client.closeGame = function () {
 $(document).ready(function () {
     // set button-click of start-new-game
     $("#startGame").click(function () {
-        $.connection.hub.start().done(function () {
-            // extract info
-            var name = $("#mazeName").val();
-            var rows = $("#rows").val();
-            var cols = $("#cols").val();
-
-            // start new game
+        // extract info
+        var name = $("#mazeName").val();
+        var rows = $("#rows").val();
+        var cols = $("#cols").val();
+        if (!isConnStart) {
+            isConnStart = true;
+            $.connection.hub.start().done(function () {
+                // start new game
+                multiGame.server.startGame(name, rows, cols);
+            });
+        } else {
             multiGame.server.startGame(name, rows, cols);
-        });
+        }
     });
 
     // set button-click of join-game
@@ -147,6 +152,7 @@ $(document).ready(function () {
     $('#dropdown-games').on('show.bs.dropdown',
         function () {
             if (!isConnStart) {
+                isConnStart = true;
                 $.connection.hub.start().done(function () {
                     multiGame.server.getAvailablesGame();
                 });
