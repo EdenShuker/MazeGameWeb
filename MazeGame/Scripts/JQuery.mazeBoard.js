@@ -19,6 +19,9 @@ var movePlayerFunc;
         isEnable,
         funcMove) {
 
+        playerImg = document.getElementById("playerImg");
+        playerImg.src = playerImagePath;
+
         var canvas = this[0];
         context = this[0].getContext("2d");
         var rows = mazeData[0];
@@ -49,20 +52,21 @@ var movePlayerFunc;
             }
         }
         // draw player image
-        playerImg = new Image();
-        playerImg.onload = function() {
-            context.drawImage(playerImg, initCol * cellWidth, initRow * cellHeight, cellWidth, cellHeight);
-        }
-        playerImg.src = playerImagePath;
+        
+
+        //playerImg.width = cellWidth;
+        //playerImg.height = cellHeight;
+        context.drawImage(playerImg, initCol * cellWidth, initRow * cellHeight, cellWidth, cellHeight);
+
         // draw exit image
-        var exitImg = new Image();
-        exitImg.onload = function() {
-            context.drawImage(exitImg, exitCol * cellWidth, exitRow * cellHeight, cellWidth, cellHeight);
-        }
+        var exitImg = document.getElementById("exitImg");
+        //exitImg.width = cellWidth;
+        //exitImg.height = cellHeight;
         exitImg.src = exitImagePath;
+        context.drawImage(exitImg, exitCol * cellWidth, exitRow * cellHeight, cellWidth, cellHeight);
 
         if (isEnable === true) {
-            movePlayerFunc = function (e) {
+            movePlayerFunc = function(e) {
                 var newPosition = funcMove(e.which, currentRow, currentCol);
                 if (currentRow !== newPosition[0] || currentCol !== newPosition[1]) {
                     // "delete" prev player-image
@@ -71,17 +75,18 @@ var movePlayerFunc;
                     // draw the new one
                     currentRow = newPosition[0];
                     currentCol = newPosition[1];
-                    context.drawImage(playerImg, currentCol * cellWidth, currentRow * cellHeight, cellWidth, cellHeight);
+                    context
+                        .drawImage(playerImg, currentCol * cellWidth, currentRow * cellHeight, cellWidth, cellHeight);
                 }
                 // check for end of game
-                window.setTimeout(function () {
-                    if (currentRow === exitRow && currentCol === exitCol) {
-                        // disable movement once reached the end
-                        $("body").off("keydown", movePlayerFunc);
-                        alert("You did it!\nFinally...");
-                        return;
-                    }
-                },
+                window.setTimeout(function() {
+                        if (currentRow === exitRow && currentCol === exitCol) {
+                            // disable movement once reached the end
+                            $("body").off("keydown", movePlayerFunc);
+                            alert("You did it!\nFinally...");
+                            return;
+                        }
+                    },
                     100);
             }
 
