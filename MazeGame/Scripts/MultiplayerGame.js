@@ -6,9 +6,10 @@ var competitorContext;
 var competitorImg;
 var competitorRow, competitorCol;
 var cellWidth, cellHeight;
+var isConnStart = false;
 
 // set the function to draw a board
-multiGame.client.drawBoard = function(canvasName,
+multiGame.client.drawBoard = function (canvasName,
     recData,
     playerImagePath,
     exitImagePath,
@@ -25,37 +26,37 @@ multiGame.client.drawBoard = function(canvasName,
         playerImagePath,
         exitImagePath,
         isEnable,
-        function(direction, playerRow, playerCol) {
+        function (direction, playerRow, playerCol) {
             var isNewMove = false;
             switch (direction) {
-            case 37:
-                // left
-                if (playerCol > 0 && mazeStr[playerRow * cols + playerCol - 1] !== "1") {
-                    playerCol -= 1;
-                    isNewMove = true;
-                }
-                break;
-            case 38:
-                // up
-                if (playerRow > 0 && mazeStr[(playerRow - 1) * cols + playerCol] !== "1") {
-                    playerRow -= 1;
-                    isNewMove = true;
-                }
-                break;
-            case 39:
-                // right
-                if (playerCol < cols - 1 && mazeStr[playerRow * cols + playerCol + 1] !== "1") {
-                    playerCol += 1;
-                    isNewMove = true;
-                }
-                break;
-            case 40:
-                // down
-                if (playerRow < rows - 1 && mazeStr[(playerRow + 1) * cols + playerCol] !== "1") {
-                    playerRow += 1;
-                    isNewMove = true;
-                }
-                break;
+                case 37:
+                    // left
+                    if (playerCol > 0 && mazeStr[playerRow * cols + playerCol - 1] !== "1") {
+                        playerCol -= 1;
+                        isNewMove = true;
+                    }
+                    break;
+                case 38:
+                    // up
+                    if (playerRow > 0 && mazeStr[(playerRow - 1) * cols + playerCol] !== "1") {
+                        playerRow -= 1;
+                        isNewMove = true;
+                    }
+                    break;
+                case 39:
+                    // right
+                    if (playerCol < cols - 1 && mazeStr[playerRow * cols + playerCol + 1] !== "1") {
+                        playerCol += 1;
+                        isNewMove = true;
+                    }
+                    break;
+                case 40:
+                    // down
+                    if (playerRow < rows - 1 && mazeStr[(playerRow + 1) * cols + playerCol] !== "1") {
+                        playerRow += 1;
+                        isNewMove = true;
+                    }
+                    break;
             }
             if (isNewMove) {
                 // if valid move --> notify
@@ -75,29 +76,29 @@ multiGame.client.drawBoard = function(canvasName,
 };
 
 // function for updating competitor's position
-multiGame.client.moveOtherPlayer = function(direction) {
+multiGame.client.moveOtherPlayer = function (direction) {
     // clear previous image
     competitorContext.fillStyle = "#ffffff";
     competitorContext.fillRect(cellWidth * competitorCol, cellHeight * competitorRow, cellWidth, cellHeight);
 
     // change position of competitor
     switch (direction) {
-    case 37:
-        // left
-        competitorCol -= 1;
-        break;
-    case 38:
-        // up
-        competitorRow -= 1;
-        break;
-    case 39:
-        // right
-        competitorCol += 1;
-        break;
-    case 40:
-        // down
-        competitorRow += 1;
-        break;
+        case 37:
+            // left
+            competitorCol -= 1;
+            break;
+        case 38:
+            // up
+            competitorRow -= 1;
+            break;
+        case 39:
+            // right
+            competitorCol += 1;
+            break;
+        case 40:
+            // down
+            competitorRow += 1;
+            break;
     }
 
     // update on screen
@@ -108,10 +109,23 @@ multiGame.client.moveOtherPlayer = function(direction) {
         cellHeight);
 };
 
-$(document).ready(function() {
+multiGame.client.presentAvailableGames = function (games) {
+    var dropdown = $("#dropdown");
+    games.forEach(function (game) {
+        dropdown.append("<li>" + game + "</li>");
+    });
+};
+
+// todo: fill method
+multiGame.client.closeGame = function () {
+    alert("close");
+};
+
+
+$(document).ready(function () {
     // set button-click of start-new-game
-    $("#startGame").click(function() {
-        $.connection.hub.start().done(function() {
+    $("#startGame").click(function () {
+        $.connection.hub.start().done(function () {
             // extract info
             var name = $("#mazeName").val();
             var rows = $("#rows").val();
@@ -124,28 +138,22 @@ $(document).ready(function() {
 
     // set button-click of join-game
     $("#joinGame").click(function () {
-        $.connection.hub.start().done(function () {
-            // join to game
-            var name = $("#dropdown").val();
-            multiGame.server.JoinTo(name);
-        });
+        // join to game
+        var name = $("#dropdown").val();
+        multiGame.server.JoinTo(name);
     });
 
     // drop down game list
     $('#dropdown-games').on('show.bs.dropdown',
         function () {
-            multiGame.server.GetAvailablesGame();
+            if (!isConnStart) {
+                $.connection.hub.start().done(function () {
+                    multiGame.server.getAvailablesGame();
+                });
+            } else {
+                multiGame.server.getAvailablesGame();
+            }
         });
 });
 
-// todo: fill method
-multiGame.client.closeGame = function() {
-    alert("close");
-};
 
-multiGame.client.presentAvailableGames = function (games) {
-    var dropdown = $("#dropdown");
-    games.forEach(function (game) {
-        dropdown.append("<li>" + game + "</li>");
-    });
-};
