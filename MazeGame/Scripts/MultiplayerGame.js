@@ -126,8 +126,13 @@ multiGame.client.closeGame = function (isWon) {
     if (!isWon) {
         // disable move
         $("body").off("keydown", $("#myCanvas").movePlayerFunc);
+        // change title
+        $("title").text("Loser T_T");
         // notify
         alert("You lost...");
+    } else {
+        // change title
+        $("title").text("Winner!");
     }
 };
 
@@ -139,6 +144,10 @@ $(document).ready(function () {
         var name = $("#mazeName").val();
         var rows = $("#rows").val();
         var cols = $("#cols").val();
+
+        // change title
+        $("title").text(name);
+
         if (!isConnStart) {
             isConnStart = true;
             $.connection.hub.start().done(function () {
@@ -154,6 +163,8 @@ $(document).ready(function () {
     $("#joinGame").click(function () {
         // join to game
         var name = $("#dropdown").text();
+        // change title
+        $("title").text(name);
         multiGame.server.joinTo(name);
     });
 
