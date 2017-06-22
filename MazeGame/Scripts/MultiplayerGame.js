@@ -11,8 +11,8 @@ var isConnStart = false;
 // set the function to draw a board
 multiGame.client.drawBoard = function (canvasName,
     recData,
-    playerImagePath,
-    exitImagePath,
+    playerImgId,
+    exitImgId,
     isEnable) {
 
     recData = JSON.parse(recData);
@@ -23,8 +23,8 @@ multiGame.client.drawBoard = function (canvasName,
         recData["Start"]["Col"],
         recData["End"]["Row"],
         recData["End"]["Col"],
-        playerImagePath,
-        exitImagePath,
+        document.getElementById(playerImgId),
+        document.getElementById(exitImgId),
         isEnable,
         function (direction, playerRow, playerCol) {
             var isNewMove = false;

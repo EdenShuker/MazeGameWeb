@@ -21,7 +21,7 @@ namespace MazeGame
             string clientId = Context.ConnectionId;
             Maze maze = model.StartGame(nameOfGame, rows, cols, clientId);
             Clients.Client(clientId).drawBoard("myCanvas", maze.ToJSON(),
-                "../Views/Images/minion.gif", "../Views/Images/Exit.png", true);
+                "playerImg", "exitImg", true);
         }
 
         public void JoinTo(string nameOfGame)
@@ -32,13 +32,13 @@ namespace MazeGame
             Maze maze = model.JoinTo(nameOfGame, Context.ConnectionId);
             // my boards
             Clients.Client(clientId).drawBoard("myCanvas", maze.ToJSON(),
-                "../Views/Images/minion.gif", "../Views/Images/Exit.png", true);
+                "playerImg", "exitImg", true);
             Clients.Client(clientId).drawBoard("competitorCanvas", maze.ToJSON(),
-                "../Views/Images/pokemon.gif", "../Views/Images/Exit.png", false);
+                "competitorImg", "exitImg", false);
             // competitor
             string opponentId = model.GetCompetitorOf(clientId);
             Clients.Client(opponentId).drawBoard("competitorCanvas", maze.ToJSON(),
-                "../Views/Images/pokemon.gif", "../Views/Images/Exit.png", false);
+                "competitorImg", "exitImg", false);
         }
 
         public void Play(string direction)

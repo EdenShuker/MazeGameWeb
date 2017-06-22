@@ -3,7 +3,6 @@ var startRow, startCol;
 var currentRow, currentCol;
 var endRow, endCol;
 var cellWidth, cellHeight;
-var playerImg;
 var context;
 var movePlayerFunc;
 
@@ -14,8 +13,8 @@ var movePlayerFunc;
         initCol,
         exitRow,
         exitCol,
-        playerImagePath,
-        exitImagePath,
+        playerImg,
+        exitImg,
         isEnable,
         funcMove) {
 
@@ -49,20 +48,13 @@ var movePlayerFunc;
             }
         }
         // draw player image
-        playerImg = new Image();
-        playerImg.onload = function() {
-            context.drawImage(playerImg, initCol * cellWidth, initRow * cellHeight, cellWidth, cellHeight);
-        }
-        playerImg.src = playerImagePath;
+        context.drawImage(playerImg, startCol * cellWidth, startRow * cellHeight, cellWidth, cellHeight);
+
         // draw exit image
-        var exitImg = new Image();
-        exitImg.onload = function() {
-            context.drawImage(exitImg, exitCol * cellWidth, exitRow * cellHeight, cellWidth, cellHeight);
-        }
-        exitImg.src = exitImagePath;
+        context.drawImage(exitImg, exitCol * cellWidth, exitRow * cellHeight, cellWidth, cellHeight);
 
         if (isEnable === true) {
-            movePlayerFunc = function (e) {
+            movePlayerFunc = function(e) {
                 var newPosition = funcMove(e.which, currentRow, currentCol);
                 if (currentRow !== newPosition[0] || currentCol !== newPosition[1]) {
                     // "delete" prev player-image
@@ -71,17 +63,18 @@ var movePlayerFunc;
                     // draw the new one
                     currentRow = newPosition[0];
                     currentCol = newPosition[1];
-                    context.drawImage(playerImg, currentCol * cellWidth, currentRow * cellHeight, cellWidth, cellHeight);
+                    context
+                        .drawImage(playerImg, currentCol * cellWidth, currentRow * cellHeight, cellWidth, cellHeight);
                 }
                 // check for end of game
-                window.setTimeout(function () {
-                    if (currentRow === exitRow && currentCol === exitCol) {
-                        // disable movement once reached the end
-                        $("body").off("keydown", movePlayerFunc);
-                        alert("You did it!\nFinally...");
-                        return;
-                    }
-                },
+                window.setTimeout(function() {
+                        if (currentRow === exitRow && currentCol === exitCol) {
+                            // disable movement once reached the end
+                            $("body").off("keydown", movePlayerFunc);
+                            alert("You did it!\nFinally...");
+                            return;
+                        }
+                    },
                     100);
             }
 

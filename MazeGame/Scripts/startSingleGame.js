@@ -27,8 +27,8 @@ $("#startGame").click(function () {
                 recData["Start"]["Col"],
                 recData["End"]["Row"],
                 recData["End"]["Col"],
-                "Images/minion.gif",
-                "Images/Exit.png",
+                document.getElementById("playerImg"),
+                document.getElementById("exitImg"),
                 true,
                 function(direction, playerRow, playerCol) {
                     switch (direction) {
