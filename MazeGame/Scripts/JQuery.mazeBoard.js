@@ -10,13 +10,6 @@
         isEnable,
         funcMove) {
 
-        //var mazeStr;
-        //var startRow, startCol;
-        //var endRow, endCol;
-        //var cellWidth, cellHeight;
-        //var context;
-        //var playerImage;
-
         var canvas = this[0];
         var context = canvas.context = canvas.getContext("2d");
         var rows = mazeData[0];

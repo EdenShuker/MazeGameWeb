@@ -1,12 +1,13 @@
 ﻿// Declare a proxy to reference the hub
 var multiGame = $.connection.gameHub;
+var isConnStart = false;
 
 // vars for tracking competitor
 var competitorContext;
 var competitorImg;
 var competitorRow, competitorCol;
 var cellWidth, cellHeight;
-var isConnStart = false;
+var moveFunc;
 
 // set the function to draw a board
 multiGame.client.drawBoard = function (canvasName,
@@ -123,6 +124,9 @@ multiGame.client.presentAvailableGames = function (games) {
 // todo: fill method
 multiGame.client.closeGame = function (isWon) {
     if (!isWon) {
+        // disable move
+        $("body").off("keydown", $("#myCanvas").movePlayerFunc);
+        // notify
         alert("You lost...");
     }
 };

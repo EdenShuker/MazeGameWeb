@@ -57,8 +57,8 @@ namespace MazeGame
         private void Close(string nameOfGame, string playerId)
         {
             ServerModel model = ServerModel.GetInstance();
-            model.Close(nameOfGame);
             string opponentId = model.GetCompetitorOf(Context.ConnectionId);
+            model.Close(nameOfGame);
             // TODO: implement 'closeGame' method in client side.
             Clients.Client(opponentId).closeGame(false);
             Clients.Client(playerId).closeGame(true);
