@@ -17,7 +17,8 @@ multiGame.client.drawBoard = function (canvasName,
 
     recData = JSON.parse(recData);
     // call plugin
-    var mazeData = [recData["Rows"], recData["Cols"], recData["Maze"]];
+    var rows = recData["Rows"], cols = recData["Cols"];
+    var mazeData = [rows, cols, recData["Maze"]];
     var board = $("#" + canvasName).mazeBoard(mazeData,
         recData["Start"]["Row"],
         recData["Start"]["Col"],
@@ -68,10 +69,10 @@ multiGame.client.drawBoard = function (canvasName,
         // init competitor vars
         competitorRow = recData["Start"]["Row"];
         competitorCol = recData["Start"]["Col"];
-        cellWidth = board[0].cellWidth;
-        cellHeight = board[0].cellHeight;
-        competitorContext = board[0].context;
-        competitorImg = board[0].playerImg;
+        cellWidth = board.cellWidth;
+        cellHeight = board.cellHeight;
+        competitorContext = board[0].getContext("2d");
+        competitorImg = board.playerImage;
     }
 };
 

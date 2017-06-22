@@ -5,6 +5,7 @@ var endRow, endCol;
 var cellWidth, cellHeight;
 var context;
 var movePlayerFunc;
+var playerImage;
 
 (function($) {
 
@@ -22,8 +23,9 @@ var movePlayerFunc;
         context = this[0].getContext("2d");
         var rows = mazeData[0];
         var cols = mazeData[1];
-        cellWidth = this[0].width / cols;
-        cellHeight = this[0].height / rows;
+        cellWidth = this.cellWidth = this[0].width / cols;
+        cellHeight = this.cellHeight = this[0].height / rows;
+        playerImage = this.playerImage = playerImg;
 
         // clear previous board
         context.clearRect(0, 0, canvas.width, canvas.height);
