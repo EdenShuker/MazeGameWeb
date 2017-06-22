@@ -78,7 +78,10 @@ namespace MazeGame.Models
             return this.model.GetCompetitorOf(playerId);
         }
 
-
+        public bool IsPlayerReachedExit(string playerId)
+        {
+            return this.model.IsPlayerReachedExit(playerId);
+        }
     }
 }
 

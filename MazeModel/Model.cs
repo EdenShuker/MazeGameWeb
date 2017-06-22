@@ -209,6 +209,14 @@ namespace MazeModel
             return game.GetCompetitorOf(playerId).PlayerId;
         }
 
+        public bool IsPlayerReachedExit(string playerId)
+        {
+            MultiPlayerGame game = this.playerToGame[playerId];
+            Position goalPos = game.Maze.GoalPos;
+            Position curPos = game.GetPlayer(playerId).Location;
+            return (goalPos.Row == curPos.Row && goalPos.Col == curPos.Col);
+        }
+
         /// <summary>
         /// Class holds info about a maze.
         /// </summary>

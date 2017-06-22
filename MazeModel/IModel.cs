@@ -84,5 +84,8 @@ namespace MazeModel
         /// <param name="player">Player.</param>
         /// <returns>Its competitor, null if the given client is not in any game.</returns>
         string GetCompetitorOf(string playerId);
+
+
+        bool IsPlayerReachedExit(string playerId);
     }
 }

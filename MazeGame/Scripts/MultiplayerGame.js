@@ -86,19 +86,19 @@ multiGame.client.moveOtherPlayer = function (direction) {
 
     // change position of competitor
     switch (direction) {
-        case 37:
+        case "37":
             // left
             competitorCol -= 1;
             break;
-        case 38:
+        case "38":
             // up
             competitorRow -= 1;
             break;
-        case 39:
+        case "39":
             // right
             competitorCol += 1;
             break;
-        case 40:
+        case "40":
             // down
             competitorRow += 1;
             break;
@@ -121,8 +121,10 @@ multiGame.client.presentAvailableGames = function (games) {
 };
 
 // todo: fill method
-multiGame.client.closeGame = function () {
-    alert("close");
+multiGame.client.closeGame = function (isWon) {
+    if (!isWon) {
+        alert("You lost...");
+    }
 };
 
 

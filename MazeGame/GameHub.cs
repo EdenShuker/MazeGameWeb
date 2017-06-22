@@ -45,18 +45,23 @@ namespace MazeGame
         {
             ServerModel model = ServerModel.GetInstance();
             string playerId = Context.ConnectionId;
-            model.Play(direction, playerId);
+            string gameName = model.Play(ToDirectionStr(direction), playerId);
             string opponentId = model.GetCompetitorOf(playerId);
             Clients.Client(opponentId).moveOtherPlayer(direction);
+            if (model.IsPlayerReachedExit(playerId))
+            {
+                Close(gameName, playerId);
+            }
         }
 
-        public void Close(string nameOfGame)
+        private void Close(string nameOfGame, string playerId)
         {
             ServerModel model = ServerModel.GetInstance();
             model.Close(nameOfGame);
             string opponentId = model.GetCompetitorOf(Context.ConnectionId);
             // TODO: implement 'closeGame' method in client side.
-            Clients.Client(opponentId).closeGame();
+            Clients.Client(opponentId).closeGame(false);
+            Clients.Client(playerId).closeGame(true);
         }
 
 
@@ -65,5 +70,27 @@ namespace MazeGame
             string[] games = ServerModel.GetInstance().GetAvailableGames();
             Clients.Client(Context.ConnectionId).presentAvailableGames(games);
         }
+
+        private static string ToDirectionStr(string direction)
+        {
+            string directionStr = "unknown";
+            switch (direction)
+            {
+                case "37":
+                    directionStr = "left";
+                    break;
+                case "38":
+                    directionStr = "up";
+                    break;
+                case "39":
+                    directionStr = "right";
+                    break;
+                case "40":
+                    directionStr = "down";
+                    break;
+            }
+            return directionStr;
+        }
+
     }
 }
