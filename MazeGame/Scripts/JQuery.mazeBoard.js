@@ -1,13 +1,4 @@
-﻿var mazeStr;
-var startRow, startCol;
-var currentRow, currentCol;
-var endRow, endCol;
-var cellWidth, cellHeight;
-var context;
-var movePlayerFunc;
-var playerImage;
-
-(function($) {
+﻿(function($) {
 
     $.fn.mazeBoard = function(mazeData,
         initRow,
@@ -19,29 +10,36 @@ var playerImage;
         isEnable,
         funcMove) {
 
+        //var mazeStr;
+        //var startRow, startCol;
+        //var endRow, endCol;
+        //var cellWidth, cellHeight;
+        //var context;
+        //var playerImage;
+
         var canvas = this[0];
-        context = this[0].getContext("2d");
+        var context = canvas.context = canvas.getContext("2d");
         var rows = mazeData[0];
         var cols = mazeData[1];
-        cellWidth = this.cellWidth = this[0].width / cols;
-        cellHeight = this.cellHeight = this[0].height / rows;
-        playerImage = this.playerImage = playerImg;
+        var cellWidth = canvas.cellWidth = canvas.width / cols;
+        var cellHeight = canvas.cellHeight = canvas.height / rows;
+        canvas.playerImg = playerImg;
 
         // clear previous board
         context.clearRect(0, 0, canvas.width, canvas.height);
 
         // init vars
-        mazeStr = mazeData[2];
-        startRow = currentRow = initRow;
-        startCol = currentCol = initCol;
-        endRow = exitRow;
-        endCol = exitCol;
+        canvas.mazeStr = mazeData[2];
+        var currentRow = canvas.currentRow = canvas.startRow = initRow;
+        var currentCol = canvas.currentCol = canvas.startCol = initCol;
+        canvas.endRow = exitRow;
+        canvas.endCol = exitCol;
 
         // draw squares
         context.fillStyle = "#000000";
         for (var i = 0; i < rows; i++) {
             for (var j = 0; j < cols; j++) {
-                if (mazeStr[i * cols + j] === "1") {
+                if (canvas.mazeStr[i * cols + j] === "1") {
                     context.fillRect(cellWidth * j,
                         cellHeight * i,
                         cellWidth,
@@ -50,13 +48,14 @@ var playerImage;
             }
         }
         // draw player image
-        context.drawImage(playerImg, startCol * cellWidth, startRow * cellHeight, cellWidth, cellHeight);
+        context.drawImage(playerImg, initCol * cellWidth, initRow * cellHeight, cellWidth, cellHeight);
 
         // draw exit image
         context.drawImage(exitImg, exitCol * cellWidth, exitRow * cellHeight, cellWidth, cellHeight);
 
+        var movePlayerFunc;
         if (isEnable === true) {
-            movePlayerFunc = function(e) {
+            canvas.movePlayerFunc = movePlayerFunc = function(e) {
                 var newPosition = funcMove(e.which, currentRow, currentCol);
                 if (currentRow !== newPosition[0] || currentCol !== newPosition[1]) {
                     // "delete" prev player-image

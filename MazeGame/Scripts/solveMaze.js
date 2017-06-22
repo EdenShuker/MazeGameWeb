@@ -9,6 +9,16 @@
         url: "../api/SingleGame/SolveMaze/" + name + "/" + algo,
         success: function(recData) {
             var sol = recData["Solution"];
+
+            // init vars
+            var canvasToSolve = document.getElementById("myCanvas");
+            var context = canvasToSolve.context;
+            var currentRow = canvasToSolve.currentRow, currentCol = canvasToSolve.currentCol;
+            var startRow = canvasToSolve.startRow, startCol = canvasToSolve.startCol;
+            var endRow = canvasToSolve.endRow, endCol = canvasToSolve.endCol;
+            var cellWidth = canvasToSolve.cellWidth, cellHeight = canvasToSolve.cellHeight;
+            var playerImg = canvasToSolve.playerImg;
+
             // "delete" prev player-image
             context.fillStyle = "#ffffff";
             context.fillRect(cellWidth * currentCol, cellHeight * currentRow, cellWidth, cellHeight);
@@ -17,7 +27,8 @@
             currentRow = startRow;
             currentCol = startCol;
             // disable movement
-            $("body").off("keydown", movePlayerFunc);
+            //$("body").off("keydown", movePlayerFunc);
+            $("body").off();
             // start showing solution
             var i = 0;
             sol = sol.split("");
