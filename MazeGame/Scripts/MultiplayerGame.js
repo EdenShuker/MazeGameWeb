@@ -134,6 +134,7 @@ multiGame.client.moveOtherPlayer = function(direction) {
 multiGame.client.presentAvailableGames = function(games) {
     var i = 0;
     var dropdown = $("#dropdown").empty();
+    dropdown.append("<option selected disabled>Games &dArr;</option>");
     games.forEach(function(game) {
         dropdown.append("<option value=" + i + ">" + game + "</option>");
     });
