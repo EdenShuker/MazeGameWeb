@@ -118,6 +118,23 @@ namespace MazeGame.Controllers
             return Ok();
         }
 
+        [Route("api/Users/lose/{id}")]
+        [ResponseType(typeof(User))]
+        public async Task<IHttpActionResult> PostLose(string id)
+        {
+            User user = await db.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            db.Entry(user).Entity.Losses += 1;
+            db.Entry(id).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+
+            return Ok();
+        }
+
         // DELETE: api/Users/5
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> DeleteUser(string id)

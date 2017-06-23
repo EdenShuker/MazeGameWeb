@@ -1,4 +1,4 @@
-﻿var ViewModel = function () {
+﻿var ViewModel = function() {
     var self = this;
 
     // set values
@@ -20,7 +20,7 @@ var cellWidth, cellHeight;
 var moveFunc;
 
 // set the function to draw a board
-multiGame.client.drawBoard = function (canvasName,
+multiGame.client.drawBoard = function(canvasName,
     recData,
     playerImgId,
     exitImgId,
@@ -39,37 +39,37 @@ multiGame.client.drawBoard = function (canvasName,
         document.getElementById(playerImgId),
         document.getElementById(exitImgId),
         isEnable,
-        function (direction, playerRow, playerCol) {
+        function(direction, playerRow, playerCol) {
             var isNewMove = false;
             switch (direction) {
-                case 37:
-                    // left
-                    if (playerCol > 0 && mazeStr[playerRow * cols + playerCol - 1] !== "1") {
-                        playerCol -= 1;
-                        isNewMove = true;
-                    }
-                    break;
-                case 38:
-                    // up
-                    if (playerRow > 0 && mazeStr[(playerRow - 1) * cols + playerCol] !== "1") {
-                        playerRow -= 1;
-                        isNewMove = true;
-                    }
-                    break;
-                case 39:
-                    // right
-                    if (playerCol < cols - 1 && mazeStr[playerRow * cols + playerCol + 1] !== "1") {
-                        playerCol += 1;
-                        isNewMove = true;
-                    }
-                    break;
-                case 40:
-                    // down
-                    if (playerRow < rows - 1 && mazeStr[(playerRow + 1) * cols + playerCol] !== "1") {
-                        playerRow += 1;
-                        isNewMove = true;
-                    }
-                    break;
+            case 37:
+                // left
+                if (playerCol > 0 && mazeStr[playerRow * cols + playerCol - 1] !== "1") {
+                    playerCol -= 1;
+                    isNewMove = true;
+                }
+                break;
+            case 38:
+                // up
+                if (playerRow > 0 && mazeStr[(playerRow - 1) * cols + playerCol] !== "1") {
+                    playerRow -= 1;
+                    isNewMove = true;
+                }
+                break;
+            case 39:
+                // right
+                if (playerCol < cols - 1 && mazeStr[playerRow * cols + playerCol + 1] !== "1") {
+                    playerCol += 1;
+                    isNewMove = true;
+                }
+                break;
+            case 40:
+                // down
+                if (playerRow < rows - 1 && mazeStr[(playerRow + 1) * cols + playerCol] !== "1") {
+                    playerRow += 1;
+                    isNewMove = true;
+                }
+                break;
             }
             if (isNewMove) {
                 // if valid move --> notify
@@ -90,29 +90,29 @@ multiGame.client.drawBoard = function (canvasName,
 };
 
 // function for updating competitor's position
-multiGame.client.moveOtherPlayer = function (direction) {
+multiGame.client.moveOtherPlayer = function(direction) {
     // clear previous image
     competitorContext.fillStyle = "#ffffff";
     competitorContext.fillRect(cellWidth * competitorCol, cellHeight * competitorRow, cellWidth, cellHeight);
 
     // change position of competitor
     switch (direction) {
-        case "37":
-            // left
-            competitorCol -= 1;
-            break;
-        case "38":
-            // up
-            competitorRow -= 1;
-            break;
-        case "39":
-            // right
-            competitorCol += 1;
-            break;
-        case "40":
-            // down
-            competitorRow += 1;
-            break;
+    case "37":
+        // left
+        competitorCol -= 1;
+        break;
+    case "38":
+        // up
+        competitorRow -= 1;
+        break;
+    case "39":
+        // right
+        competitorCol += 1;
+        break;
+    case "40":
+        // down
+        competitorRow += 1;
+        break;
     }
 
     // update on screen
@@ -123,25 +123,33 @@ multiGame.client.moveOtherPlayer = function (direction) {
         cellHeight);
 };
 
-multiGame.client.presentAvailableGames = function (games) {
+multiGame.client.presentAvailableGames = function(games) {
     var i = 0;
     var dropdown = $("#dropdown").empty();
-    games.forEach(function (game) {
+    games.forEach(function(game) {
         dropdown.append("<option value=" + i + ">" + game + "</option>");
     });
 };
 
-multiGame.client.closeGame = function (isWon) {
+multiGame.client.closeGame = function(isWon) {
+    var api = "../api/Users";
+    var id = sessionStorage.getItem("user");
     if (!isWon) {
         // disable move
         $("body").off("keydown", $("#myCanvas").movePlayerFunc);
         // change title
-        $("title").text("Loser T_T");
+        $("title").text("Loser");
         // notify
         alert("You lost...");
+
+        // update db
+        $.getJSON(api + "/" + "lose" + id);
     } else {
         // change title
         $("title").text("Winner!");
+
+        // update db
+        $.getJSON(api + "/" + "win" + id);
     }
 };
 
@@ -149,9 +157,9 @@ multiGame.client.gameStarted = function() {
     document.getElementById("loader").style.display = "none";
 }
 
-$(document).ready(function () {
+$(document).ready(function() {
     // set button-click of start-new-game
-    $("#startGame").click(function () {
+    $("#startGame").click(function() {
         // loader
         document.getElementById("loader").style.display = "block";
 
@@ -165,7 +173,7 @@ $(document).ready(function () {
 
         if (!isConnStart) {
             isConnStart = true;
-            $.connection.hub.start().done(function () {
+            $.connection.hub.start().done(function() {
                 // start new game
                 multiGame.server.startGame(name, rows, cols);
             });
@@ -175,20 +183,26 @@ $(document).ready(function () {
     });
 
     // set button-click of join-game
-    $("#joinGame").click(function () {
+    $("#joinGame").click(function() {
+        // loader
+        document.getElementById("loader").style.display = "block";
+
         // join to game
         var name = $("#dropdown").text();
         // change title
         $("title").text(name);
         multiGame.server.joinTo(name);
+
+        // disable loader
+        document.getElementById("loader").style.display = "none";
     });
 
     // drop down game list
     $('#dropdown-games').on('show.bs.dropdown',
-        function () {
+        function() {
             if (!isConnStart) {
                 isConnStart = true;
-                $.connection.hub.start().done(function () {
+                $.connection.hub.start().done(function() {
                     multiGame.server.getAvailablesGame();
                 });
             } else {
@@ -196,5 +210,3 @@ $(document).ready(function () {
             }
         });
 });
-
-
