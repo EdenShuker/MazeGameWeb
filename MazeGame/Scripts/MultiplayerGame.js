@@ -131,7 +131,6 @@ multiGame.client.presentAvailableGames = function (games) {
     });
 };
 
-// todo: fill method
 multiGame.client.closeGame = function (isWon) {
     if (!isWon) {
         // disable move
@@ -146,10 +145,16 @@ multiGame.client.closeGame = function (isWon) {
     }
 };
 
+multiGame.client.gameStarted = function() {
+    document.getElementById("loader").style.display = "none";
+}
 
 $(document).ready(function () {
     // set button-click of start-new-game
     $("#startGame").click(function () {
+        // loader
+        document.getElementById("loader").style.display = "block";
+
         // extract info
         var name = $("#mazeName").val();
         var rows = $("#rows").val();

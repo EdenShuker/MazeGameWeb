@@ -39,6 +39,8 @@ namespace MazeGame
             string opponentId = model.GetCompetitorOf(clientId);
             Clients.Client(opponentId).drawBoard("competitorCanvas", maze.ToJSON(),
                 "competitorImg", "exitImg", false);
+            // notify other player
+            Clients.Client(opponentId).gameStarted();
         }
 
         public void Play(string direction)
