@@ -1,17 +1,19 @@
-﻿var ViewModel = function () {
-    var self = this;
+﻿$(function() {
+    var ViewModel = function() {
+        var self = this;
 
-    // set values
-    self.rows = ko.observable(localStorage.getItem("rows"));
-    self.cols = ko.observable(localStorage.getItem("cols"));
-    self.searchAlgo = ko.observable(localStorage.getItem("searchAlgo"));
-}
+        // set values
+        self.rows = ko.observable(localStorage.getItem("rows"));
+        self.cols = ko.observable(localStorage.getItem("cols"));
+        self.searchAlgo = ko.observable(localStorage.getItem("searchAlgo"));
+    }
 
-ko.applyBindings(new ViewModel());
+    ko.applyBindings(new ViewModel());
+});
 
-$("#startGame").click(function () {
+$("#startGame").click(function() {
     // loader
-    document.getElementById("loader").style.display = "block" ;
+    document.getElementById("loader").style.display = "block";
 
     var name = $("#mazeName").val();
     if (name === "") {
@@ -27,7 +29,7 @@ $("#startGame").click(function () {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         url: "../api/SingleGame/GenerateMaze/" + name + "/" + rows + "/" + cols,
-        success: function (recData) {
+        success: function(recData) {
             // change title
             $("title").text(recData["Name"]);
             // call plugin

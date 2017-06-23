@@ -27,7 +27,6 @@
             currentRow = startRow;
             currentCol = startCol;
             // disable movement
-            //$("body").off("keydown", movePlayerFunc);
             $("body").off();
             // start showing solution
             var i = 0;

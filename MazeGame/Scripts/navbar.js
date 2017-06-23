@@ -1,21 +1,20 @@
-var navbar =
-    " <nav id='navbar'>\
-    <div class='w3-bar w3-black w3-round-xlarge'>\
-        <a class='w3-bar-item w3-button' href='../index.html'>Maze</a>\
-        <a href='../Views/SinglePlayerPage.html' class='w3-bar-item w3-button'>Single Game</a>\
-        <a id='multi' href='../Views/MultiPlayerPage.html' class='w3-bar-item w3-button'>Multiplayer Game</a>\
-        <a href='../Views/Settings.html' class='w3-bar-item w3-button'>Settings</a>\
-        <a href='../Views/UserRankings.html' class='w3-bar-item w3-button'>User Rankings</a>\
-        <a id='logLbl' href='../Views/Login.html' class='w3-bar-item w3-button w3-right'>Login</a>\
-        <a id='regLbl' href='../Views/Register.html' class='w3-bar-item w3-button w3-right'>Register</a>\
-    </div >\
-</nav >";
-
-var login = ">Login";
-var logout = ">Logout";
-
-
 $(function() {
+    var navbar =
+        " <nav id='navbar'>\
+            <div class='w3-bar w3-black w3-round-xlarge'>\
+                <a class='w3-bar-item w3-button' href='../index.html'>Maze</a>\
+                <a href='../Views/SinglePlayerPage.html' class='w3-bar-item w3-button'>Single Game</a>\
+                <a id='multi' href='../Views/MultiPlayerPage.html' class='w3-bar-item w3-button'>Multiplayer Game</a>\
+                <a href='../Views/Settings.html' class='w3-bar-item w3-button'>Settings</a>\
+                <a href='../Views/UserRankings.html' class='w3-bar-item w3-button'>User Rankings</a>\
+                <a id='logLbl' href='../Views/Login.html' class='w3-bar-item w3-button w3-right'>Login</a>\
+                <a id='regLbl' href='../Views/Register.html' class='w3-bar-item w3-button w3-right'>Register</a>\
+            </div >\
+        </nav >";
+
+    var login = ">Login";
+    var logout = ">Logout";
+
     if (sessionStorage.user === undefined) {
         // change text to login
         navbar = navbar.replace(logout, login);
