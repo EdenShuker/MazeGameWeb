@@ -1,4 +1,14 @@
-﻿// Declare a proxy to reference the hub
+﻿var ViewModel = function () {
+    var self = this;
+
+    // set values
+    self.rows = ko.observable(localStorage.getItem("rows"));
+    self.cols = ko.observable(localStorage.getItem("cols"));
+}
+
+ko.applyBindings(new ViewModel());
+
+// Declare a proxy to reference the hub
 var multiGame = $.connection.gameHub;
 var isConnStart = false;
 

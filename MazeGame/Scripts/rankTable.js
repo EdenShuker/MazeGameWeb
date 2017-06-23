@@ -1,11 +1,11 @@
 ﻿var ViewModel = function () {
     var self = this; // make 'this' available to subfunctions or closures
-    self.userRankings = ko.observableArray(); // enables data binding
-    var userRankingsUri = "../api/UserRankings";
+    self.users = ko.observableArray(); // enables data binding
+    var usersUri = "../api/Users";
 
     function getAllRankings() {
-        $.getJSON(userRankingsUri).done(function (data) {
-            self.userRankings(data);
+        $.getJSON(usersUri).done(function (data) {
+            self.users(data);
         });
     }
     // Fetch the initial data

@@ -3,7 +3,7 @@ var navbar =
     <div class='w3-bar w3-black w3-round-xlarge'>\
         <a class='w3-bar-item w3-button' href='../index.html'>Maze</a>\
         <a href='../Views/SinglePlayerPage.html' class='w3-bar-item w3-button'>Single Game</a>\
-        <a href='../Views/MultiPlayerPage.html' class='w3-bar-item w3-button'>Multiplayer Game</a>\
+        <a id='multi' href='../Views/MultiPlayerPage.html' class='w3-bar-item w3-button'>Multiplayer Game</a>\
         <a href='../Views/Settings.html' class='w3-bar-item w3-button'>Settings</a>\
         <a href='../Views/UserRankings.html' class='w3-bar-item w3-button'>User Rankings</a>\
         <a id='logLbl' href='../Views/Login.html' class='w3-bar-item w3-button w3-right'>Login</a>\
@@ -43,4 +43,17 @@ $(function() {
                 window.location.href = "../Views/Login.html";
             });
     }
+});
+
+$(function () {
+    $("#multi").click(function () {
+        if (sessionStorage.user === undefined) {
+            // user is not logged in
+            alert("In order to play multiplayer-game you need to login first");
+            window.location.href = "../Views/Login.html";
+            // prevent href
+            return false;
+        }
+        return true;
+    });
 });

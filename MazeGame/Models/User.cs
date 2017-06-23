@@ -15,5 +15,11 @@ namespace MazeGame.Models
         public string Password { get; set; }
 
         public string Email { get; set; }
+
+        [Range(0, int.MaxValue)]
+        public int Wins { get; set; }
+
+        [Range(0, int.MaxValue)]
+        public int Losses { get; set; }
     }
 }

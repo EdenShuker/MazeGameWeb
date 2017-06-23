@@ -20,7 +20,5 @@ namespace MazeGame.Models
         }
 
         public System.Data.Entity.DbSet<MazeGame.Models.User> Users { get; set; }
-
-        public System.Data.Entity.DbSet<MazeGame.Models.UserRankings> UserRankings { get; set; }
     }
 }

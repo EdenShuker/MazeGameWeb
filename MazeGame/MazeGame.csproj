@@ -168,28 +168,18 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SingleGameController.cs" />
-    <Compile Include="Controllers\UserRankingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="GameHub.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706151517208_Initial.cs" />
-    <Compile Include="Migrations\201706151517208_Initial.Designer.cs">
-      <DependentUpon>201706151517208_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706161420469_Initial1.cs" />
-    <Compile Include="Migrations\201706161420469_Initial1.Designer.cs">
-      <DependentUpon>201706161420469_Initial1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706161429347_Initial2.cs" />
-    <Compile Include="Migrations\201706161429347_Initial2.Designer.cs">
-      <DependentUpon>201706161429347_Initial2.cs</DependentUpon>
+    <Compile Include="Migrations\201706222356069_Initial.cs" />
+    <Compile Include="Migrations\201706222356069_Initial.Designer.cs">
+      <DependentUpon>201706222356069_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ServerModel.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserRankings.cs" />
     <Compile Include="Models\UsersInfoContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -205,14 +195,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706151517208_Initial.resx">
-      <DependentUpon>201706151517208_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706161420469_Initial1.resx">
-      <DependentUpon>201706161420469_Initial1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706161429347_Initial2.resx">
-      <DependentUpon>201706161429347_Initial2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706222356069_Initial.resx">
+      <DependentUpon>201706222356069_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

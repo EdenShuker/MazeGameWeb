@@ -23,9 +23,9 @@
                     <th><span>Wins</span></th>
                     <th><span>Losses</span></th>
                 </tr>
-                <!-- ko foreach: userRankings -->
+                <!-- ko foreach: users -->
                 <tr class="w3-hover-pale-green">
-                    <td><span data-bind="text: Rank"></span></td>
+                    <td><span data-bind="text: $index"></span></td>
                     <th class="w3-text-blue"><span data-bind="text: Name"></span></th>
                     <td><span data-bind="text: Wins"></span></td>
                     <td><span data-bind="text: Losses"></span></td>

@@ -9,16 +9,6 @@
     <!--<link href="../Scripts/navbar.css" rel="stylesheet">-->
 </head>
 <body>
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="../Scripts/jquery.signalR-2.2.2.js"></script>
-    <script src="../signalr/hubs"></script>
-    <script src="../Scripts/JQuery.mazeBoard.js"></script>
-    <!--<script src="../Scripts/jquery-3.2.1.js"></script>-->
-    <script src="../Scripts/MultiplayerGame.js"></script>
-
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-<!--<script src="../Scripts/navbar.js"></script>-->
 
 <div class="container body-content">
         <!--<div class="navigationbar"></div>-->
@@ -63,14 +53,14 @@
                 <!--rows-->
                 <label for="rows" class="col-sm-3 control-label">Rows</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" id="rows" />
+                    <input type="text" class="form-control" data-bind="value: rows" id="rows" />
                 </div>
             </div>
             <div class="form-group">
                 <!--cols-->
                 <label for="cols" class="col-sm-3 control-label">Cols</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" id="cols" />
+                    <input type="text" class="form-control" data-bind="value: cols" id="cols" />
                 </div>
             </div>
             <!--start game-->
@@ -96,6 +86,18 @@
         <img id="competitorImg" src="Images/pokemon.gif" style="display: none"/>
 
     </div>
+    
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../Scripts/knockout-3.4.2.js"></script>
+    <script src="../Scripts/jquery.signalR-2.2.2.js"></script>
+    <script src="../signalr/hubs"></script>
+    <script src="../Scripts/JQuery.mazeBoard.js"></script>
+    <!--<script src="../Scripts/jquery-3.2.1.js"></script>-->
+    <script src="../Scripts/MultiplayerGame.js"></script>
+
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!--<script src="../Scripts/navbar.js"></script>-->
 
 </body>
 </html>

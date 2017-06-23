@@ -12,11 +12,9 @@
         $.getJSON(usersUri + "/" + self.userName()).done(function (data) {
             this.name1 = self.userName();
             this.password1 = self.password();
-            alert(this.password1 + " " + data.Password);
             if (this.password1 === data.Password) {
                 // save user
                 sessionStorage.setItem('user', this.name1);
-                alert("passwords match");
                 window.location.href = "../index.html";
             } else {
                 alert("passwords doesn't match");
@@ -29,9 +27,11 @@
 
 
     self.register = function () {
+        // check for non empty input in all
         if (self.userName() === "" || self.email() === "" || self.password() === "" || self.confirm_password() === "") {
             alert("Fill all the fields");
         } else if (!self.email().includes("@")) {
+            // check valid email
             alert("Invalid email");
         } else {
             if (self.password() === self.confirm_password()) {
@@ -41,8 +41,9 @@
                     Password: self.password()
                 };
                 $.post(usersUri, user).done(function (item) {
-                    alert(item.Name + " " + item.Email);
-                })
+                    sessionStorage.setItem("user", self.userName());
+                        window.location.href = "../index.html";
+                    })
                     .fail(function (jqXHR, textStatus, err) {
                         alert("adding user failed");
                     });

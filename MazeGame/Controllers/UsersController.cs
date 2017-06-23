@@ -20,7 +20,7 @@ namespace MazeGame.Controllers
         // GET: api/Users
         public IQueryable<User> GetUsers()
         {
-            return db.Users;
+            return db.Users.OrderByDescending(user => user.Wins - user.Losses);
         }
 
         // GET: api/Users/5
