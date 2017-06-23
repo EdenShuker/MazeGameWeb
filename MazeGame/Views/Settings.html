@@ -11,7 +11,7 @@
         <div class="navigationbar"></div>
 
         <div class="w3-display-container w3-padding-32">
-            <div class="w3-card-4 w3-center w3-display-middle" style="width: 40%; height: 50%">
+            <div id="contDiv" class="w3-card-4 w3-center w3-display-middle">
 
                 <div class="w3-container w3-black"><h1>Settings</h1></div>
 
@@ -20,12 +20,12 @@
                         <!--Rows-->
                         <div class="form-group w3-padding-32 w3-display-container">
                             <label for="rows" class="col-sm-2 control-label w3-display-left w3-margin-left">Rows</label>
-                            <input type="text" name="rows" id="rows" data-bind="value: rows" tabindex="1" class="form-control w3-input w3-display-right w3-margin-right" style="width: 50%">
+                            <input type="text" name="rows" id="rows" data-bind="value: rows" tabindex="1" class="form-control w3-input w3-display-right w3-margin-right contInp">
                         </div>
                         <!--Cols-->
                         <div class="form-group w3-padding-32 w3-display-container">
                             <label for="cols" class="col-sm-2 control-label w3-display-left w3-margin-left">Cols</label>
-                            <input type="text" name="cols" id="cols" data-bind="value: cols" tabindex="1" class="form-control w3-input w3-display-right w3-margin-right" style="width:50%;">
+                            <input type="text" name="cols" id="cols" data-bind="value: cols" tabindex="1" class="form-control w3-input w3-display-right w3-margin-right contInp">
                         </div>
                         <!--Search algo-->
                         <div class="form-group w3-padding-32 w3-display-container">
@@ -54,6 +54,7 @@
     <link href="../Scripts/css/navbar.css" rel="stylesheet">
     <script src="../Scripts/knockout-3.4.2.js"></script>
     <script src="../Scripts/settings.js"></script>
+    <link href="../Scripts/css/settings.css" rel="stylesheet"/>
 
 </body>
 </html>

@@ -67,21 +67,21 @@
                     <button type="submit" id="startGame" class="btn btn-default">Start Game</button>
                 </div>
             </div>
-            <div id="loader" style="display: none"></div>
+            <div id="loader"></div>
         </div>
         <!--canvas-->
         <div class="col-sm-9 text-center">
             <div class="col-sm-6">
-                <canvas id="myCanvas" tabindex="1" class="maze-board" width="400" height="400" style="border:2px solid #000000;"></canvas>
+                <canvas id="myCanvas" tabindex="1" class="maze-board"></canvas>
             </div>
             <div class="col-sm-6">
-                <canvas id="competitorCanvas" tabindex="2" class="maze-board" width="400" height="400" style="border:2px solid #000000;"></canvas>
+                <canvas id="competitorCanvas" tabindex="2" class="maze-board"></canvas>
             </div>
         </div>
         
-        <img id="playerImg" src="Images/minion.gif" style="display: none" />
-        <img id="exitImg" src="Images/Exit.png" style="display: none" />
-        <img id="competitorImg" src="Images/pokemon.gif" style="display: none"/>
+        <img id="playerImg" src="Images/minion.gif" class="hideen"/>
+        <img id="exitImg" src="Images/Exit.png" class="hideen"/>
+        <img id="competitorImg" src="Images/pokemon.gif" class="hideen"/>
 
     </div>
     
@@ -97,6 +97,7 @@
     <script src="../Scripts/JQuery.mazeBoard.js"></script>
     <script src="../Scripts/MultiplayerGame.js"></script>
     <link href="../Scripts/css/loader.css" rel="stylesheet"/>
+    <link href="../Scripts/css/multi.css" rel="stylesheet"/>
 
 </body>
 </html>

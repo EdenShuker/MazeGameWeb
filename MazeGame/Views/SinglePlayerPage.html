@@ -2,75 +2,78 @@
 <html>
 <head>
     <title>Single Player Game</title>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 </head>
 <body>
 
-    <div class="w3-container">
+<div class="w3-container">
 
-        <div class="navigationbar"></div>
+    <div class="navigationbar"></div>
 
-        <div class="w3-container w3-black w3-margin w3-center"><h1>Single Player Game</h1></div>
-
-        <div class="w3-display-container w3-margin">
-            <div style="width: 30%; float: left" class="w3-center">
-                <fieldset class="w3-border-0">
-                    <form>
-                        <!--Name-->
-                        <div class="w3-padding-24 w3-display-container">
-                            <label for="rows" class="w3-display-left w3-margin-left">Name</label>
-                            <input id="mazeName" type="text" tabindex="1" class="w3-input w3-display-right w3-margin-right" style="width: 50%">
-                        </div>
-                        <!--Rows-->
-                        <div class="w3-padding-24 w3-display-container">
-                            <label for="rows" class="w3-display-left w3-margin-left">Rows</label>
-                            <input type="text" name="rows" id="rows" data-bind="value: rows" tabindex="1" class="w3-input w3-display-right w3-margin-right" style="width: 50%">
-                        </div>
-                        <!--Cols-->
-                        <div class="w3-padding-24 w3-display-container">
-                            <label for="cols" class="w3-display-left w3-margin-left">Cols</label>
-                            <input type="text" name="cols" id="cols" data-bind="value: cols" tabindex="1" class="w3-input w3-display-right w3-margin-right" style="width: 50%;">
-                        </div>
-                        <!--Start button-->
-                        <div class="w3-padding-16">
-                            <button type="button" id="startGame" class="w3-button w3-round-xlarge w3-green">Start New Game</button>
-                        </div>
-                        <div id="loader" style="display: none"></div>
-
-                        <!--Search algo-->
-                        <div class="w3-padding-24 w3-display-container">
-                            <label for="searchAlgo" class="w3-display-left w3-margin-left">Search</label>
-                            <select name="searchAlgo" id="searchAlgo" data-bind="value: searchAlgo" class="w3-display-right w3-margin-right">
-                                <option value="0">BFS</option>
-                                <option value="1">DFS</option>
-                            </select>
-                        </div>
-                        <!--Solve button-->
-                        <div class="w3-padding-16">
-                            <button type="button" id="solveGame" class="w3-button w3-round-xlarge w3-green">Solve</button>
-                        </div>
-                    </form>
-                </fieldset>
-            </div>
-            <div style="width: 70%; float: right">
-                <canvas id="myCanvas" tabindex="1" class="maze-board" width="500" height="500" style="border: 2px solid #000000;"></canvas>
-            </div>
-        </div>
-        
-        <img id="playerImg" src="Images/minion.gif" style="display: none"/>
-        <img id="exitImg" src="Images/Exit.png" style="display: none"/>
-
+    <div class="w3-container w3-black w3-margin w3-center">
+        <h1>Single Player Game</h1>
     </div>
 
-    <script src="../Scripts/jquery-3.2.1.js"></script>
-    <script src="../Scripts/knockout-3.4.2.js"></script>
-    <script src="../Scripts/navbar.js"></script>
-    <link href="../Scripts/css/W3.css" rel="stylesheet" />
-    <link href="../Scripts/css/navbar.css" rel="stylesheet">
-    <script src="../Scripts/JQuery.mazeBoard.js"></script>
-    <script src="../Scripts/startSingleGame.js"></script>
-    <script src="../Scripts/solveMaze.js"></script>
-    <link href="../Scripts/css/loader.css" rel="stylesheet"/>
+    <div class="w3-display-container w3-margin">
+        <div id="contDivSmall" class="w3-center">
+            <fieldset class="w3-border-0">
+                <form>
+                    <!--Name-->
+                    <div class="w3-padding-24 w3-display-container">
+                        <label for="rows" class="w3-display-left w3-margin-left">Name</label>
+                        <input id="mazeName" type="text" tabindex="1" class="w3-input w3-display-right w3-margin-right">
+                    </div>
+                    <!--Rows-->
+                    <div class="w3-padding-24 w3-display-container">
+                        <label for="rows" class="w3-display-left w3-margin-left">Rows</label>
+                        <input type="text" name="rows" id="rows" data-bind="value: rows" tabindex="1" class="w3-input w3-display-right w3-margin-right">
+                    </div>
+                    <!--Cols-->
+                    <div class="w3-padding-24 w3-display-container">
+                        <label for="cols" class="w3-display-left w3-margin-left">Cols</label>
+                        <input type="text" name="cols" id="cols" data-bind="value: cols" tabindex="1" class="w3-input w3-display-right w3-margin-right">
+                    </div>
+                    <!--Start button-->
+                    <div class="w3-padding-16">
+                        <button type="button" id="startGame" class="w3-button w3-round-xlarge w3-green">Start New Game</button>
+                    </div>
+                    <div id="loader"></div>
+
+                    <!--Search algo-->
+                    <div class="w3-padding-24 w3-display-container">
+                        <label for="searchAlgo" class="w3-display-left w3-margin-left">Search</label>
+                        <select name="searchAlgo" id="searchAlgo" data-bind="value: searchAlgo" class="w3-display-right w3-margin-right">
+                            <option value="0">BFS</option>
+                            <option value="1">DFS</option>
+                        </select>
+                    </div>
+                    <!--Solve button-->
+                    <div class="w3-padding-16">
+                        <button type="button" id="solveGame" class="w3-button w3-round-xlarge w3-green">Solve</button>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+        <div id="contDivBig">
+            <canvas id="myCanvas" tabindex="1" class="maze-board"></canvas>
+        </div>
+    </div>
+
+    <img id="playerImg" src="Images/minion.gif"/>
+    <img id="exitImg" src="Images/Exit.png"/>
+
+</div>
+
+<script src="../Scripts/jquery-3.2.1.js"></script>
+<script src="../Scripts/knockout-3.4.2.js"></script>
+<script src="../Scripts/navbar.js"></script>
+<link href="../Scripts/css/W3.css" rel="stylesheet"/>
+<link href="../Scripts/css/navbar.css" rel="stylesheet">
+<script src="../Scripts/JQuery.mazeBoard.js"></script>
+<script src="../Scripts/startSingleGame.js"></script>
+<script src="../Scripts/solveMaze.js"></script>
+<link href="../Scripts/css/loader.css" rel="stylesheet"/>
+<link href="../Scripts/css/singlePlayerGame.css" rel="stylesheet"/>
 
 </body>
 </html>

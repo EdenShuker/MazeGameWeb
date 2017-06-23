@@ -123,7 +123,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
+    <Content Include="Scripts\css\homePage.css" />
+    <Content Include="Scripts\css\learnMore.css" />
     <Content Include="Scripts\css\loader.css" />
+    <Content Include="Scripts\css\login.css" />
+    <Content Include="Scripts\css\multi.css" />
+    <Content Include="Scripts\css\register.css" />
+    <Content Include="Scripts\css\settings.css" />
+    <Content Include="Scripts\css\singlePlayerGame.css" />
     <Content Include="Scripts\css\W3.css" />
     <Content Include="Scripts\settings.js" />
     <Content Include="Scripts\userLog.js" />
@@ -154,7 +161,6 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Views\MultiPlayerPage.html" />
-    <Content Include="Views\Navbar.html" />
     <Content Include="Views\Register.html" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\JQuery.mazeBoard.js" />

@@ -1,0 +1,23 @@
+﻿#contDivSmall {
+    width: 30%;
+    float: left;
+}
+
+#contDivBig {
+    width: 70%;
+    float: right;
+}
+
+canvas {
+    border: 2px solid #000000;
+    width: 500px;
+    height: 500px
+}
+
+img {
+    display: none;
+}
+
+.w3-input {
+    width: 50%;
+}
