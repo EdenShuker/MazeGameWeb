@@ -35,6 +35,7 @@
                         <div class="w3-padding-16">
                             <button type="button" id="startGame" class="w3-button w3-round-xlarge w3-green">Start New Game</button>
                         </div>
+                        <div id="loader" style="display: none"></div>
 
                         <!--Search algo-->
                         <div class="w3-padding-24 w3-display-container">
@@ -51,11 +52,8 @@
                     </form>
                 </fieldset>
             </div>
-            <div>
-                <div id="loader" style="display: none; float: left"></div>
-                <div style="width: 70%; float: right">
-                    <canvas id="myCanvas" tabindex="1" class="maze-board" width="500" height="500" style="border: 2px solid #000000;"></canvas>
-                </div>
+            <div style="width: 70%; float: right">
+                <canvas id="myCanvas" tabindex="1" class="maze-board" width="500" height="500" style="border: 2px solid #000000;"></canvas>
             </div>
         </div>
         
