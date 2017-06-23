@@ -142,7 +142,10 @@ multiGame.client.presentAvailableGames = function(games) {
 
 multiGame.client.closeGame = function(isWon) {
     var api = "../api/Users/";
-    var user = { Name: sessionStorage.getItem("user")};
+    var user = { Name: sessionStorage.getItem("user") };
+    var errFunc = function() {
+        alert("Could not update the server with your score");
+    };
     if (!isWon) {
         // update db
         $.ajax({
@@ -157,7 +160,8 @@ multiGame.client.closeGame = function(isWon) {
                 $("title").text("Loser");
                 // notify
                 alert("You lost...");
-            }
+            },
+            error: errFunc
         });
     } else {
         // update db
@@ -169,7 +173,8 @@ multiGame.client.closeGame = function(isWon) {
             success: function() {
                 // change title
                 $("title").text("Winner!");
-            }
+            },
+            error: errFunc
         });
     }
 };
@@ -191,12 +196,14 @@ $(document).ready(function() {
 
         // change title
         $("title").text(name);
-
+        
         if (!isConnStart) {
             isConnStart = true;
             $.connection.hub.start().done(function() {
                 // start new game
                 multiGame.server.startGame(name, rows, cols);
+            }).fail(function () {
+                alert("Could not start connection with the server");
             });
         } else {
             multiGame.server.startGame(name, rows, cols);
@@ -205,17 +212,21 @@ $(document).ready(function() {
 
     // set button-click of join-game
     $("#joinGame").click(function() {
-        // loader
-        document.getElementById("loader").style.display = "block";
+        if (isConnStart) {
+            // loader
+            document.getElementById("loader").style.display = "block";
 
-        // join to game
-        var name = $("#dropdown").text();
-        // change title
-        $("title").text(name);
-        multiGame.server.joinTo(name);
+            // join to game
+            var name = $("#dropdown").text();
+            // change title
+            $("title").text(name);
+            multiGame.server.joinTo(name);
 
-        // disable loader
-        document.getElementById("loader").style.display = "none";
+            // disable loader
+            document.getElementById("loader").style.display = "none";
+        } else {
+            alert("Choose a game from the list first");
+        }
     });
 
     // drop down game list
@@ -225,6 +236,8 @@ $(document).ready(function() {
                 isConnStart = true;
                 $.connection.hub.start().done(function() {
                     multiGame.server.getAvailablesGame();
+                }).fail(function () {
+                    alert("Could not start connection with the server");
                 });
             } else {
                 multiGame.server.getAvailablesGame();

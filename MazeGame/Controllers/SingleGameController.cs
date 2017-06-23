@@ -14,13 +14,20 @@ namespace MazeGame.Controllers
 {
     public class SingleGameController : ApiController
     {
-
         [HttpGet]
         [Route("api/SingleGame/GenerateMaze/{name}/{rows}/{cols}")]
         public JObject GenerateMaze(string name, int rows, int cols)
         {
-            Maze maze = ServerModel.GetInstance().GenerateMaze(name, rows, cols);
-            JObject obj = JObject.Parse(maze.ToJSON());
+            JObject obj;
+            try
+            {
+                Maze maze = ServerModel.GetInstance().GenerateMaze(name, rows, cols);
+                obj = JObject.Parse(maze.ToJSON());
+            }
+            catch (Exception e)
+            {
+                obj = new JObject {["msg"] = "Game already exists"};
+            }
             return obj;
         }
 
@@ -71,6 +78,5 @@ namespace MazeGame.Controllers
             }
             return builder.ToString();
         }
-
     }
 }

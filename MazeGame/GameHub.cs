@@ -66,7 +66,6 @@ namespace MazeGame
             Clients.Client(playerId).closeGame(true);
         }
 
-
         public void GetAvailablesGame()
         {
             string[] games = ServerModel.GetInstance().GetAvailableGames();

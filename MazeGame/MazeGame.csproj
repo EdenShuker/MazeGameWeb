@@ -127,7 +127,6 @@
     <Content Include="Scripts\css\W3.css" />
     <Content Include="Scripts\settings.js" />
     <Content Include="Scripts\userLog.js" />
-    <Content Include="Scripts\homePage.js" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />

@@ -14,6 +14,12 @@ $("#startGame").click(function () {
     document.getElementById("loader").style.display = "block" ;
 
     var name = $("#mazeName").val();
+    if (name === "") {
+        alert("Please enter a name");
+        // disable loader
+        document.getElementById("loader").style.display = "none";
+        return;
+    }
     var rows = $("#rows").val();
     var cols = $("#cols").val();
     $.ajax({
@@ -65,9 +71,12 @@ $("#startGame").click(function () {
                     }
                     return [playerRow, playerCol];
                 });
-            // disable loader
-            document.getElementById("loader").style.display = "none";
         },
-        error: function(result) { alert("error " + result[0]); }
+        error: function(result) {
+            alert(result.responseJSON["ExceptionMessage"]);
+            $("#mazeName").val("");
+        }
     });
+    // disable loader
+    document.getElementById("loader").style.display = "none";
 });

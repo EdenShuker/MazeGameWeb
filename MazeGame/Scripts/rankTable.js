@@ -6,6 +6,8 @@
     function getAllRankings() {
         $.getJSON(usersUri).done(function (data) {
             self.users(data);
+        }).fail(function () {
+            alert("Could not start connection with the server");
         });
     }
     // Fetch the initial data
