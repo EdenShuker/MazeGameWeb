@@ -140,24 +140,36 @@ multiGame.client.presentAvailableGames = function(games) {
 };
 
 multiGame.client.closeGame = function(isWon) {
-    var api = "../api/Users";
-    var id = sessionStorage.getItem("user");
+    var api = "../api/Users/";
+    var user = { Name: sessionStorage.getItem("user")};
     if (!isWon) {
-        // disable move
-        $("body").off("keydown", $("#myCanvas").movePlayerFunc);
-        // change title
-        $("title").text("Loser");
-        // notify
-        alert("You lost...");
-
         // update db
-        $.getJSON(api + "/" + "lose/" + id);
+        $.ajax({
+            url: api + "lose",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(user),
+            success: function() {
+                // disable move
+                $("body").off("keydown", $("#myCanvas").movePlayerFunc);
+                // change title
+                $("title").text("Loser");
+                // notify
+                alert("You lost...");
+            }
+        });
     } else {
-        // change title
-        $("title").text("Winner!");
-
         // update db
-        $.getJSON(api + "/" + "win/" + id);
+        $.ajax({
+            url: api + "win",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(user),
+            success: function() {
+                // change title
+                $("title").text("Winner!");
+            }
+        });
     }
 };
 

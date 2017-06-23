@@ -101,35 +101,37 @@ namespace MazeGame.Controllers
             return CreatedAtRoute("DefaultApi", new { id = user.Name }, user);
         }
 
-        [Route("api/Users/win/{id}")]
-        [ResponseType(typeof(User))]
-        public async Task<IHttpActionResult> PostWin(string id)
+        [HttpPost]
+        [Route("api/Users/win")]
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> Win(User user)
         {
-            User user = await db.Users.FindAsync(id);
-            if (user == null)
+            User record = await db.Users.FindAsync(user.Name);
+            if (record == null)
             {
                 return NotFound();
             }
 
-            db.Entry(user).Entity.Wins += 1;
-            db.Entry(id).State = EntityState.Modified;
+            db.Entry(record).Entity.Wins += 1;
+            db.Entry(record).State = EntityState.Modified;
             await db.SaveChangesAsync();
 
             return Ok();
         }
 
-        [Route("api/Users/lose/{id}")]
-        [ResponseType(typeof(User))]
-        public async Task<IHttpActionResult> PostLose(string id)
+        [HttpPost]
+        [Route("api/Users/lose")]
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> Lose(User user)
         {
-            User user = await db.Users.FindAsync(id);
-            if (user == null)
+            User record = await db.Users.FindAsync(user.Name);
+            if (record == null)
             {
                 return NotFound();
             }
 
-            db.Entry(user).Entity.Losses += 1;
-            db.Entry(id).State = EntityState.Modified;
+            db.Entry(record).Entity.Losses += 1;
+            db.Entry(record).State = EntityState.Modified;
             await db.SaveChangesAsync();
 
             return Ok();
