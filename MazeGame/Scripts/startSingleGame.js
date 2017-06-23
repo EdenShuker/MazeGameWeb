@@ -11,7 +11,7 @@ ko.applyBindings(new ViewModel());
 
 $("#startGame").click(function () {
     // loader
-    $(".loader").style.display = "block" ;
+    document.getElementById("loader").style.display = "block" ;
 
     var name = $("#mazeName").val();
     var rows = $("#rows").val();
@@ -65,6 +65,8 @@ $("#startGame").click(function () {
                     }
                     return [playerRow, playerCol];
                 });
+            // disable loader
+            document.getElementById("loader").style.display = "none";
         },
         error: function(result) { alert("error " + result[0]); }
     });
