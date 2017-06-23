@@ -9,20 +9,23 @@
 
 
     self.login = function () {
-        $.getJSON(usersUri + "/" + self.userName()).done(function (data) {
-            this.name1 = self.userName();
-            this.password1 = self.password();
-            if (this.password1 === data.Password) {
+        var user = {Name: self.userName(), Password: self.password()}
+        $.ajax({
+            url: usersUri + "/login",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(user),
+            success: function () {
                 // save user
-                sessionStorage.setItem('user', this.name1);
+                sessionStorage.setItem('user', user.Name);
                 window.location.href = "../index.html";
-            } else {
-                alert("passwords doesn't match");
+            },
+            error: function () {
+                $("#username").val("");
+                $("#password").val("");
+                alert("User was not found");
             }
-        })
-            .fail(function (jqXHR, textStatus, err) {
-                alert("user doesn't exist");
-            });
+        });
     };
 
 

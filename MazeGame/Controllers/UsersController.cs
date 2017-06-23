@@ -6,6 +6,8 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -71,6 +73,14 @@ namespace MazeGame.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        private static string Hash(string str)
+        {
+            SHA1 sha1 = SHA1.Create();
+            byte[] buffer = Encoding.ASCII.GetBytes(str);
+            byte[] hashed = sha1.ComputeHash(buffer);
+            return Convert.ToBase64String(hashed);
+        }
+
         // POST: api/Users
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> PostUser(User user)
@@ -81,6 +91,8 @@ namespace MazeGame.Controllers
             }
 
             db.Users.Add(user);
+
+            user.Password = Hash(user.Password);
 
             try
             {
@@ -99,6 +111,26 @@ namespace MazeGame.Controllers
             }
 
             return CreatedAtRoute("DefaultApi", new { id = user.Name }, user);
+        }
+
+        // POST: api/Users
+        [HttpPost]
+        [Route("api/Users/login")]
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> Login(User user)
+        {
+            User record = await db.Users.FindAsync(user.Name);
+            if (record == null)
+            {
+                return BadRequest();
+            }
+
+            if (record.Password != Hash(user.Password))
+            {
+                return BadRequest();
+            }
+
+            return Ok();
         }
 
         [HttpPost]
