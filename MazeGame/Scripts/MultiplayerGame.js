@@ -1,4 +1,12 @@
-﻿var ViewModel = function() {
+﻿(function() {
+    if (sessionStorage.user === undefined) {
+        // user is not logged in
+        alert("In order to play multiplayer-game you need to login first");
+        window.location.href = "../Views/Login.html";
+    }
+})();
+
+var ViewModel = function() {
     var self = this;
 
     // set values
@@ -143,13 +151,13 @@ multiGame.client.closeGame = function(isWon) {
         alert("You lost...");
 
         // update db
-        $.getJSON(api + "/" + "lose" + id);
+        $.getJSON(api + "/" + "lose/" + id);
     } else {
         // change title
         $("title").text("Winner!");
 
         // update db
-        $.getJSON(api + "/" + "win" + id);
+        $.getJSON(api + "/" + "win/" + id);
     }
 };
 

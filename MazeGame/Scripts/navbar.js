@@ -44,16 +44,3 @@ $(function() {
             });
     }
 });
-
-$(function () {
-    $("#multi").click(function () {
-        if (sessionStorage.user === undefined) {
-            // user is not logged in
-            alert("In order to play multiplayer-game you need to login first");
-            window.location.href = "../Views/Login.html";
-            // prevent href
-            return false;
-        }
-        return true;
-    });
-});
