@@ -10,6 +10,9 @@
 ko.applyBindings(new ViewModel());
 
 $("#startGame").click(function () {
+    // loader
+    $(".loader").style.display = "block" ;
+
     var name = $("#mazeName").val();
     var rows = $("#rows").val();
     var cols = $("#cols").val();

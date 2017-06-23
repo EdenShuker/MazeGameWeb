@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
+    <Content Include="Scripts\css\loader.css" />
     <Content Include="Scripts\css\W3.css" />
     <Content Include="Scripts\settings.js" />
     <Content Include="Scripts\userLog.js" />
