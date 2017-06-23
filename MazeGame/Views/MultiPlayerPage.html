@@ -2,102 +2,106 @@
 <html>
 <head>
     <title>Multiplayer Game</title>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
 <div class="container body-content">
-        <div class="navigationbar"></div>
-        <div class="page-header"><h2>Multiplayer Game</h2></div>
-        <div class="col-sm-3 form-horizontal">
-            <!--games dropdown-->
-            <div class="form-group">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-6">
-                    <div class="dropdown" id="dropdown-games">
-                        <select class="btn btn-default dropdown-toggle" type="button" id="dropdown" data-toggle="dropdown">
-                            <option selected disabled>Games &dArr;</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!--join button-->
-            <div class="form-group">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-6">
-                    <button type="submit" id="joinGame" class="btn btn-default">Join Game</button>
-                </div>
-            </div>
-
-            <!--form for starting new game-->
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <div class="page-header"><h3>Start New Game</h3></div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="mazeName" class="col-sm-3 control-label">Name</label>
-                <!--name-->
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" id="mazeName" />
-                </div>
-            </div>
-            <div class="form-group">
-                <!--rows-->
-                <label for="rows" class="col-sm-3 control-label">Rows</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" data-bind="value: rows" id="rows" />
-                </div>
-            </div>
-            <div class="form-group">
-                <!--cols-->
-                <label for="cols" class="col-sm-3 control-label">Cols</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" data-bind="value: cols" id="cols" />
-                </div>
-            </div>
-            <!--start game-->
-            <div class="form-group">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-6">
-                    <button type="submit" id="startGame" class="btn btn-default">Start Game</button>
-                </div>
-            </div>
-            <div id="loader"></div>
-        </div>
-        <!--canvas-->
-        <div class="col-sm-9 text-center">
-            <div class="col-sm-6">
-                <canvas id="myCanvas" tabindex="1" class="maze-board"></canvas>
-            </div>
-            <div class="col-sm-6">
-                <canvas id="competitorCanvas" tabindex="2" class="maze-board"></canvas>
-            </div>
-        </div>
-        
-        <img id="playerImg" src="Images/minion.gif" class="hideen"/>
-        <img id="exitImg" src="Images/Exit.png" class="hideen"/>
-        <img id="competitorImg" src="Images/pokemon.gif" class="hideen"/>
-
+    <div class="navigationbar"></div>
+    <div class="page-header">
+        <h2>Multiplayer Game</h2>
     </div>
-    
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="../Scripts/knockout-3.4.2.js"></script>
-    <script src="../Scripts/jquery.signalR-2.2.2.js"></script>
-    <script src="../signalr/hubs"></script>
-    <script src="../Scripts/navbar.js"></script>
-    <link href="../Scripts/css/navbar.css" rel="stylesheet">
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <link href="../Scripts/css/W3.css" rel="stylesheet" />
-    <script src="../Scripts/JQuery.mazeBoard.js"></script>
-    <script src="../Scripts/MultiplayerGame.js"></script>
-    <link href="../Scripts/css/loader.css" rel="stylesheet"/>
-    <link href="../Scripts/css/multi.css" rel="stylesheet"/>
+    <div class="col-sm-3 form-horizontal">
+        <!--games dropdown-->
+        <div class="form-group">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div class="dropdown" id="dropdown-games">
+                    <select class="btn btn-default dropdown-toggle" type="button" id="dropdown" data-toggle="dropdown">
+                        <option selected disabled>Games &dArr;</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!--join button-->
+        <div class="form-group">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <button type="submit" id="joinGame" class="btn btn-default">Join Game</button>
+            </div>
+        </div>
+
+        <!--form for starting new game-->
+        <div class="form-group">
+            <div class="col-sm-10">
+                <div class="page-header">
+                    <h3>Start New Game</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="mazeName" class="col-sm-3 control-label">Name</label>
+            <!--name-->
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="mazeName"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <!--rows-->
+            <label for="rows" class="col-sm-3 control-label">Rows</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" data-bind="value: rows" id="rows"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <!--cols-->
+            <label for="cols" class="col-sm-3 control-label">Cols</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" data-bind="value: cols" id="cols"/>
+            </div>
+        </div>
+        <!--start game-->
+        <div class="form-group">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <button type="submit" id="startGame" class="btn btn-default">Start Game</button>
+            </div>
+        </div>
+        <div id="loader"></div>
+    </div>
+    <!--canvas-->
+    <div class="col-sm-9 text-center">
+        <div class="col-sm-6">
+            <canvas id="myCanvas" tabindex="1" class="maze-board" width="400" height="400"></canvas>
+        </div>
+        <div class="col-sm-6">
+            <canvas id="competitorCanvas" tabindex="2" class="maze-board" width="400" height="400"></canvas>
+        </div>
+    </div>
+
+    <img id="playerImg" src="Images/minion.gif" class="hiden"/>
+    <img id="exitImg" src="Images/Exit.png" class="hiden"/>
+    <img id="competitorImg" src="Images/pokemon.gif" class="hiden"/>
+
+</div>
+
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../Scripts/knockout-3.4.2.js"></script>
+<script src="../Scripts/jquery.signalR-2.2.2.js"></script>
+<script src="../signalr/hubs"></script>
+<script src="../Scripts/navbar.js"></script>
+<link href="../Scripts/css/navbar.css" rel="stylesheet">
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+<link href="../Scripts/css/W3.css" rel="stylesheet"/>
+<script src="../Scripts/JQuery.mazeBoard.js"></script>
+<script src="../Scripts/MultiplayerGame.js"></script>
+<link href="../Scripts/css/loader.css" rel="stylesheet"/>
+<link href="../Scripts/css/multi.css" rel="stylesheet"/>
 
 </body>
 </html>
