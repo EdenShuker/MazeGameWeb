@@ -136,7 +136,7 @@ $(function() {
     multiGame.client.presentAvailableGames = function(games) {
         var i = 0;
         var dropdown = $("#dropdown").empty();
-        dropdown.append("<option selected disabled>Games &dArr;</option>");
+        dropdown.append("<option value='' selected disabled>Games &dArr;</option>");
         games.forEach(function(game) {
             dropdown.append("<option value=" + i + ">" + game + "</option>");
         });
@@ -219,7 +219,8 @@ $(function() {
                 document.getElementById("loader").style.display = "block";
 
                 // join to game
-                var name = $("#dropdown").text();
+                var dropdown = document.getElementById("dropdown");
+                var name = dropdown.options[dropdown.selectedIndex].text;
                 // change title
                 $("title").text(name);
                 multiGame.server.joinTo(name);
