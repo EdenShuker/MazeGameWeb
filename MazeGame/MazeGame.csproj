@@ -172,7 +172,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SingleGameController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="GameHub.cs" />

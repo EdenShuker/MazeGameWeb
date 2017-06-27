@@ -4,6 +4,7 @@
         self.users = ko.observableArray(); // enables data binding
         var usersUri = "../api/Users";
 
+        // returns all user rankings
         function getAllRankings() {
             $.getJSON(usersUri).done(function(data) {
                 self.users(data);

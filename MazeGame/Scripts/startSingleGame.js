@@ -11,6 +11,8 @@
     ko.applyBindings(new ViewModel());
 });
 
+
+// calls when start game button is pressed.
 $("#startGame").click(function() {
     // loader
     document.getElementById("loader").style.display = "block";
@@ -24,6 +26,8 @@ $("#startGame").click(function() {
     }
     var rows = $("#rows").val();
     var cols = $("#cols").val();
+
+    // Ask maze from server
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",

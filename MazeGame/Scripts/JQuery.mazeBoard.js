@@ -1,5 +1,5 @@
-﻿(function($) {
-
+﻿(function ($) {
+    // create the mazeboard 
     $.fn.mazeBoard = function(mazeData,
         initRow,
         initCol,

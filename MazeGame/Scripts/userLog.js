@@ -3,14 +3,16 @@
         var self = this; // make 'this' available to subfunctions or closures
         var usersUri = "../api/Users";
 
+        // data bind with this params
         self.userName = ko.observable("");
         self.email = ko.observable("");
         self.password = ko.observable("");
         self.confirm_password = ko.observable("");
 
-
+        // login function
         self.login = function() {
             var user = { Name: self.userName(), Password: self.password() }
+            // Ask for server if user exist
             $.ajax({
                 url: usersUri + "/login",
                 type: "POST",

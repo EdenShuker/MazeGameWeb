@@ -6,10 +6,11 @@ using System.Web;
 
 namespace MazeGame.Models
 {
+    // User object 
     public class User
     {
         [Key]
-
+ 
         public string Name { get; set; }
 
         public string Password { get; set; }

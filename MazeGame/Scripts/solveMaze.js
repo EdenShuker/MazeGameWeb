@@ -1,7 +1,10 @@
-﻿$("#solveGame").click(function() {
+﻿
+// calls when solve game button is pressed.
+$("#solveGame").click(function () {
     var name = $("#mazeName").val();
     var algo = $("#searchAlgo").val();
 
+    // ask for solution from server.
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",

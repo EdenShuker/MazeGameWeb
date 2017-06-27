@@ -14,6 +14,13 @@ namespace MazeGame.Controllers
 {
     public class SingleGameController : ApiController
     {
+        /// <summary>
+        /// Return a maze object with the given parameters.
+        /// </summary>
+        /// <param name="name"> name of game </param>
+        /// <param name="rows">number of rows</param>
+        /// <param name="cols">number of cols</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("api/SingleGame/GenerateMaze/{name}/{rows}/{cols}")]
         public JObject GenerateMaze(string name, int rows, int cols)
@@ -31,6 +38,13 @@ namespace MazeGame.Controllers
             return obj;
         }
 
+
+        /// <summary>
+        /// Return the solution of the given game.
+        /// </summary>
+        /// <param name="name"> name of game </param>
+        /// <param name="algo"> the search algorithm </param>
+        /// <returns></returns>
         [HttpGet]
         [Route("api/SingleGame/SolveMaze/{name}/{algo}")]
         public JObject SolveMaze(string name, int algo)
